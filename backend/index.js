@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require("bcrypt");
 const app = express()
 var MongoClient = require('mongodb').MongoClient;
 const port = 3000
@@ -18,11 +19,14 @@ app.get('/', (req, res) => {
 
 app.post('/addffile', function (req, res) {
 	var name = req.body.name;
+	var email = req.body.email;
+	var sport = req.body.sport;
+	var password = req.body.password;
 	res.send('Claim Submitted Successfully!');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
-  		var myobj = {name: name};
+  		var myobj = {name: name, email: email, sport: sport, password: password};
  		dbo.collection("fanfiles").insertOne(myobj, function(err, res) {
     			if (err) throw err;
     			console.log("1 document inserted");
