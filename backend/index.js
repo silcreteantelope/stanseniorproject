@@ -22,6 +22,11 @@ app.post('/addffile', function (req, res) {
 	const name = req.body.name;
 	const email = req.body.email;
 	const sport = req.body.sport;
+	const position = req.body.position;
+	const association = req.body.position;
+	const team = req.body.team;
+	const birth_year = req.body.birth_year;
+	const class_of = req.body.class_of;
 	const password = req.body.password;
 	res.send('Claim Submitted Successfully!');
 	MongoClient.connect(url, function(err, db) {
@@ -33,7 +38,12 @@ app.post('/addffile', function (req, res) {
 				name,
 				email,
 				password: hashedPassword,
-				sport
+				sport,
+				position,
+				association,
+				team,
+				birth_year,
+				class_of
 			}))
 			.catch(error => {
 				console.error('OMG Why', error);
@@ -66,5 +76,5 @@ app.post('/pullffile', function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port} url=${url}`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
