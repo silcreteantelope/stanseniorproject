@@ -6,6 +6,8 @@ const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const passport = require('passport')
+
 require('dotenv').config()
 const host = process.env.DB_HOST
 const user = process.env.DB_USER
@@ -17,6 +19,28 @@ const saltRounds= 10;
 app.get('/', (req, res) => {
     res.sendFile(__dirname+ '/expresspanel.html');
 })
+
+app.post('/login', function (req, res) {
+	var email = req.body.email;
+	var password = req.body.password;
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		var dbo = db.db("test");
+ 		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
+			if (err) throw err;
+			console.log(result.password);
+			bcrypt.compare(password, result.password, function(err, result) {
+				if(err) { throw (err); }
+				if(result == true)
+					res.send('Logged in successfully');
+				else
+					res.send('Wrong password');
+				//console.log(result);
+			});
+			db.close();
+		});
+	}); 
+});
 
 app.post('/addffile', function (req, res) {
 	const name = req.body.name;
