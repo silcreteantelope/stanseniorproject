@@ -71,7 +71,8 @@
               "browserTarget": "fanFront:build:production"
             },
             "development": {
-              "browserTarget": "fanFront:build:development"
+              "browserTarget": "fanFront:build:development",
+	      "proxyConfig": "src/proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
