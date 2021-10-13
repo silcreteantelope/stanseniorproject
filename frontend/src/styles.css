@@ -1,0 +1,14 @@
+#nopic {
+    height: 60vh;
+    overflow: auto;
+    color: lightgray;
+    padding: 50px;
+}
+#logo {
+    width: 60ox;
+    height: 40px;
+}
+#BigLogo {
+    width: 60%;
+    height: 40%;
+}
