@@ -43,7 +43,8 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/addffile', function (req, res) {
-	const name = req.body.name;
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
 	const email = req.body.email;
 	const sport = req.body.sport;
 	const position = req.body.position;
@@ -59,7 +60,8 @@ app.post('/addffile', function (req, res) {
 		bcrypt.genSalt(saltRounds)
 			.then(salt =>  bcrypt.hash(password, salt))
 			.then(hashedPassword => dbo.collection("fanfiles").insertOne({
-				name,
+				firstname,
+				lastname,
 				email,
 				password: hashedPassword,
 				sport,
