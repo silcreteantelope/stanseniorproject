@@ -33,7 +33,7 @@ import { MainComponent } from './main/main.component';
 	BrowserModule,
 	RouterModule.forRoot([
 	{path: '', component:
-	LoginComponent}
+	RegisterComponent}
 	]),
   ],
   providers: [],
