@@ -89,11 +89,13 @@ app.post('/addffile', function (req, res) {
 });
 
 app.post('/pullffile', function (req, res) {
-	var emailfind = req.body.emailfind;
+	var idfind = req.body.idfind;
+	console.log(idfind);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
- 		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
+		var ObjectId = require('mongodb').ObjectId;
+ 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
     			if (err) throw err;
 			res.json(result);
    			db.close();
@@ -101,6 +103,19 @@ app.post('/pullffile', function (req, res) {
 	}); 
 });
 
+app.post('/getid', function (req, res) {
+	var emailfind = req.body.emailfind;
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		var dbo = db.db("test");
+ 		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
+    			if (err) throw err;
+			console.log(JSON.stringify(result[0]._id));
+			res.send(result[0]._id);
+   			db.close();
+  		});
+	}); 
+});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
