@@ -28,7 +28,7 @@ app.post('/login', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
 			if (err) throw err;
-			console.log(result.password);
+			//console.log(result.password);
 			bcrypt.compare(password, result.password, function(err, result) {
 				if(err) { throw (err); }
 				if(result == true)
@@ -53,7 +53,7 @@ app.post('/addffile', function (req, res) {
 	const birth_year = req.body.birth_year;
 	const class_of = req.body.class_of;
 	const password = req.body.password;
-	res.send('Claim Submitted Successfully!');
+	res.send('Registered successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		const dbo = db.db("test");
