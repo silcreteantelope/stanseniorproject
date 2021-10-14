@@ -6,9 +6,28 @@
     <title></title>
 </head>
 <body>
-    <form action="/addffile" method="post">
-        name: <input name="name" type="text" /> <br />
-        <input type="submit" />
-    </form>
+	<form action="/addffile" method="post">
+		name: <input name="firstname" type="text" /> <br />
+		name: <input name="lastname" type="text" /> <br />
+		email: <input name="email" type="text" /> <br />
+		sport: <input name="sport" type="text" /> <br />
+		position: <input name="position" type="text" /> <br />
+		association: <input name="association" type="text" /> <br />
+		team: <input name="team" type="text" /> <br />
+		birth_year: <input name="birth_year" type="text" /> <br />
+		class_of: <input name="class_of" type="text" /> <br />
+		password: <input name="password" type="text" /> <br />
+		<input type="submit" />
+	</form>
+	<form action="/pullffile" method="post">
+		emailfind: <input name="emailfind" type="text" /> <br />
+		<input type="submit" />
+	</form>
+
+	<form action="/login" method="post">
+		email: <input name="email" type="text" /> <br />
+		password: <input name="password" type="text" /> <br />
+		<input type="submit" />
+	</form>
 </body>
 </html>
