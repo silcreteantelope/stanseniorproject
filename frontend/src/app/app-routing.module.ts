@@ -1,21 +1,25 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { PhotosComponent } from './components/photos/photos.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { NewpostComponent } from './components/newpost/newpost.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from '@angular/router';
+import { EditBlogComponent } from "./edit-blog/edit-blog.component";
+import { EditProfileComponent } from "./edit-profile/edit-profile.component";
+import { EditSocialComponent } from "./edit-social/edit-social.component";
+import { FanfileComponent } from "./fanfile/fanfile.component";
+import { LoginComponent } from "./login/login.component";
+import { MainComponent } from "./main/main.component";
+import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'photos', component: PhotosComponent },
-  { path: 'newpost', component: NewpostComponent },
+    { path: 'editBlog', component: EditBlogComponent },
+    { path: 'editProfile', component: EditProfileComponent },
+    { path: 'editSocial', component: EditSocialComponent },
+    { path: 'login' , component: LoginComponent},
+    { path: 'fanfile' , component: FanfileComponent},
+    { path: 'main' , component: MainComponent},
+    { path: 'register' , component: RegisterComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

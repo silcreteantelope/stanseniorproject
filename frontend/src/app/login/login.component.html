@@ -1,0 +1,66 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>FAN Edit Blog</title>
+		<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+		<link rel="stylesheet" href="./login.component.css">
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    </head>
+    <body oncontextmenu='return false'>
+        <div class="container rounded bg-white mt-5 mb-5">
+        <div class="container-md shadow p-4 px-5 mb-5 bg-white rounded">
+            <div class="row px-2 pt-4 pb-4 justify-content-center text-center">
+                <div class="col-sm-8">
+                    <h1 class="fw-bold text-dark text-opacity-75">FAN - Free Agent NOW!</h1>
+                    <p>Enter the below information to sign in to your account.</p> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="container rounded bg-white mt-5 mb-5">
+            <form action="/addffile" method="post">
+                <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
+                    name: <input name="name" type="text" /> <br />
+                    email: <input name="email" type="text" /> <br />
+                    sport: <input name="sport" type="text" /> <br />
+                    position: <input name="position" type="text" /> <br />
+                    association: <input name="association" type="text" /> <br />
+                    team: <input name="team" type="text" /> <br />
+                    birth_year: <input name="birth_year" type="text" /> <br />
+                    class_of: <input name="class_of" type="text" /> <br />
+                    password: <input name="password" type="text" /> <br/><br/>
+                    <div class="row text-center px-5 mx-5">
+                        <input type="submit" />
+                    </div>
+                </div>
+            </form>
+            <h2>Enter the following information to log in to your account</h2>
+            <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
+                <form action="/pullffile" method="post">
+                    <div class="row">
+                        <p class="p-1 m-2">email find:</p>
+                        <input name="emailfind" type="text" />
+                        <input type="submit" />
+                    </div>                    
+                </form>
+                <form action="/login" method="post">
+                    <div class="col-3 p-5">
+                        <div class="row-6">
+                            email: <input name="email" type="text" />
+                        </div>
+                        <div class="row-6">
+                            password: <input name="password" type="text" />
+                        </div>
+                        <div class="p-3">
+                            <input type="submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
