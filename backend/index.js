@@ -103,6 +103,46 @@ app.post('/pullffile', function (req, res) {
 	}); 
 });
 
+app.post('/editffile', function (req, res) {
+	const srcemail = req.body.srcemail;
+	const firstname = req.body.editfname;
+	const lastname = req.body.editlname;
+	const email = req.body.editemail;
+	const sport = req.body.editsport;
+	const position = req.body.editposition;
+	const association = req.body.editposition;
+	const team = req.body.editteam;
+	const birth_year = req.body.editbirth_year;
+	const class_of = req.body.editclass_of;
+	const password = req.body.editpassword;
+	res.send('Edited successfully.');
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		const dbo = db.db("test");
+		bcrypt.genSalt(saltRounds)
+			.then(salt =>  bcrypt.hash(password, salt))
+			.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
+				{
+						firstname: firstname,
+						lastname: lastname,
+						email: email,
+						password: hashedPassword,
+						sport: sport,
+						position: position,
+						association: association,
+						team: team,
+						birth_year: birth_year,
+						class_of: class_of
+			}))
+			.catch(error => {
+				console.error('OMG Why', error);
+			})
+			.finally(() => {
+				db.close();
+			});
+	});
+});
+
 app.post('/getid', function (req, res) {
 	var emailfind = req.body.emailfind;
 	MongoClient.connect(url, function(err, db) {
@@ -116,6 +156,7 @@ app.post('/getid', function (req, res) {
   		});
 	}); 
 });
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
