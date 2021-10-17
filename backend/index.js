@@ -39,13 +39,10 @@ app.post('/login', function (req, res) {
 			console.log(result.password);
 			bcrypt.compare(password, result.password, function(err, result) {
 				if(err) { throw (err); }
-				if(result == true) {
-					// res.setHeader('Bearer', generateAccessToken({ username: req.body.username }))
+				if(result == true)
 					res.send('Logged in successfully');
-				}
-				else {
+				else
 					res.send('Wrong password');
-				}
 				//console.log(result);
 			});
 			db.close();
@@ -87,6 +84,7 @@ app.post('/addffile', function (req, res) {
 				// res.send('YAS QUEEN')
 				res.send({ jwt: generateAccessToken({ username: req.body.username }) });
 			})
+			})
 			.catch(error => {
 				console.error('Error', error);
 			})
@@ -100,8 +98,7 @@ app.post('/addffile', function (req, res) {
     	// 		if (err) throw err;
     	// 		console.log("1 document inserted");
    		// 	db.close();
-  		// });
-	}); 
+  		// }); 
 });
 
 app.post('/pullffile', function (req, res) {
@@ -118,5 +115,5 @@ app.post('/pullffile', function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+  console.log(`Example app listening at http://localhost:${port}`)
+})
