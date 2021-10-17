@@ -36,7 +36,7 @@ app.post('/login', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
 			if (err) throw err;
-			console.log(result.password);
+			//console.log(result.password);
 			bcrypt.compare(password, result.password, function(err, result) {
 				if(err) { throw (err); }
 				if(result == true)
@@ -51,7 +51,8 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/addffile', function (req, res) {
-	const name = req.body.name;
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
 	const email = req.body.email;
 	const sport = req.body.sport;
 	const position = req.body.position;
@@ -60,7 +61,7 @@ app.post('/addffile', function (req, res) {
 	const birth_year = req.body.birth_year;
 	const class_of = req.body.class_of;
 	const password = req.body.password;
-	// res.send('Claim Submitted Successfully!');
+	res.send('Registered successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		const dbo = db.db("test");
@@ -71,7 +72,8 @@ app.post('/addffile', function (req, res) {
 				return bcrypt.hash(password, salt)
 			 })
 			.then(hashedPassword => dbo.collection("fanfiles").insertOne({
-				name,
+				firstname,
+				lastname,
 				email,
 				password: hashedPassword,
 				sport,
@@ -102,13 +104,69 @@ app.post('/addffile', function (req, res) {
 });
 
 app.post('/pullffile', function (req, res) {
+	var idfind = req.body.idfind;
+	console.log(idfind);
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		var dbo = db.db("test");
+		var ObjectId = require('mongodb').ObjectId;
+ 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+    			if (err) throw err;
+			res.json(result);
+   			db.close();
+  		});
+	}); 
+});
+
+app.post('/editffile', function (req, res) {
+	const srcemail = req.body.srcemail;
+	const firstname = req.body.editfname;
+	const lastname = req.body.editlname;
+	const email = req.body.editemail;
+	const sport = req.body.editsport;
+	const position = req.body.editposition;
+	const association = req.body.editposition;
+	const team = req.body.editteam;
+	const birth_year = req.body.editbirth_year;
+	const class_of = req.body.editclass_of;
+	const password = req.body.editpassword;
+	res.send('Edited successfully.');
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		const dbo = db.db("test");
+		bcrypt.genSalt(saltRounds)
+			.then(salt =>  bcrypt.hash(password, salt))
+			.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
+				{
+						firstname: firstname,
+						lastname: lastname,
+						email: email,
+						password: hashedPassword,
+						sport: sport,
+						position: position,
+						association: association,
+						team: team,
+						birth_year: birth_year,
+						class_of: class_of
+			}))
+			.catch(error => {
+				console.error('OMG Why', error);
+			})
+			.finally(() => {
+				db.close();
+			});
+	});
+});
+
+app.post('/getid', function (req, res) {
 	var emailfind = req.body.emailfind;
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
     			if (err) throw err;
-			res.json(result);
+			console.log(JSON.stringify(result[0]._id));
+			res.send(result[0]._id);
    			db.close();
   		});
 	}); 
