@@ -5,8 +5,8 @@ var MongoClient = require('mongodb').MongoClient;
 const port = 3000
 const jwt = require('jsonwebtoken');
 var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 const passport = require('passport')
 
 require('dotenv').config()
@@ -125,34 +125,42 @@ app.post('/editffile', function (req, res) {
 	const email = req.body.editemail;
 	const sport = req.body.editsport;
 	const position = req.body.editposition;
-	const association = req.body.editposition;
+	const association = req.body.editAssociation;
 	const team = req.body.editteam;
 	const birth_year = req.body.editbirth_year;
 	const class_of = req.body.editclass_of;
 	const password = req.body.editpassword;
-	res.send('Edited successfully.');
+	let resMessage = 'Success';
+	// res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		const dbo = db.db("test");
 		bcrypt.genSalt(saltRounds)
-			.then(salt =>  bcrypt.hash(password, salt))
-			.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
+			.then(salt =>   { 
+				return bcrypt.hash(password, salt)
+			})
+			.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": srcemail},
 				{
-						firstname: firstname,
-						lastname: lastname,
-						email: email,
+					$set: {
+						firstname,
+						lastname,
+						email,
 						password: hashedPassword,
-						sport: sport,
-						position: position,
-						association: association,
-						team: team,
-						birth_year: birth_year,
-						class_of: class_of
-			}))
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						class_of
+					}
+						
+			}, { ignoreUndefined: true }))
 			.catch(error => {
+				resMessage = 'Error during write to db';
 				console.error('OMG Why', error);
 			})
 			.finally(() => {
+				res.send(resMessage)
 				db.close();
 			});
 	});
@@ -174,4 +182,4 @@ app.post('/getid', function (req, res) {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
-})
+});
