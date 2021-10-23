@@ -32,6 +32,7 @@ import { MainComponent } from './main/main.component';
   imports: [
 	BrowserModule,
   AppRoutingModule,
+  HttpClientModule,
 	RouterModule.forRoot([
     {path: '', component:
     MainComponent}
