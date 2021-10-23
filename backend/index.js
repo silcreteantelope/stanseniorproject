@@ -5,6 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const passport = require('passport')
 
@@ -88,8 +89,8 @@ app.post('/addffile', function (req, res) {
 	}); 
 });
 
-app.post('/pullffile', function (req, res) {
-	var idfind = req.body.idfind;
+app.get('/pullffile', function (req, res) {
+	var idfind = req.query.id;
 	console.log(idfind);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
