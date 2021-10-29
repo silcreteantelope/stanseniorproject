@@ -5,7 +5,6 @@ var MongoClient = require('mongodb').MongoClient;
 const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const passport = require('passport')
 
