@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -33,12 +34,13 @@ import { MainComponent } from './main/main.component';
 	BrowserModule,
   AppRoutingModule,
   HttpClientModule,
+  ReactiveFormsModule,
 	RouterModule.forRoot([
     {path: '', component:
     MainComponent}
     ]),
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
