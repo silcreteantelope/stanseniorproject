@@ -91,7 +91,7 @@ app.post('/addffile', function (req, res) {
 
 app.get('/pullffile', function (req, res) {
 	var idfind = req.query.id;
-	console.log(idfind);
+	//console.log(idfind);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
