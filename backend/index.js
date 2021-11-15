@@ -5,7 +5,6 @@ var MongoClient = require('mongodb').MongoClient;
 const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const passport = require('passport')
 
@@ -115,32 +114,57 @@ app.post('/editffile', function (req, res) {
 	const team = req.body.editteam;
 	const birth_year = req.body.editbirth_year;
 	const class_of = req.body.editclass_of;
+	const country = req.body.editcountry;
+	const state = req.body.editstate;
+	const street = req.body.editstreet;
 	const password = req.body.editpassword;
 	res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		const dbo = db.db("test");
-		bcrypt.genSalt(saltRounds)
-			.then(salt =>  bcrypt.hash(password, salt))
-			.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
-				{
-						firstname: firstname,
-						lastname: lastname,
-						email: email,
-						password: hashedPassword,
-						sport: sport,
-						position: position,
-						association: association,
-						team: team,
-						birth_year: birth_year,
-						class_of: class_of
-			}))
-			.catch(error => {
-				console.error('OMG Why', error);
-			})
-			.finally(() => {
-				db.close();
-			});
+  		if(password)
+			bcrypt.genSalt(saltRounds)
+				.then(salt =>  bcrypt.hash(password, salt))
+				.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
+					{
+							firstname: firstname,
+							lastname: lastname,
+							email: email,
+							password: hashedPassword,
+							sport: sport,
+							position: position,
+							association: association,
+							team: team,
+							birth_year: birth_year,
+							class_of: class_of,
+							country: country,
+							state: state,
+							street: street
+				}))
+				.catch(error => {
+					console.error('OMG Why', error);
+				})
+				.finally(() => {
+					db.close();
+				});
+		else {
+			console.log("Street="+street);
+			dbo.collection("fanfiles").replaceOne({"email": srcemail},
+					{
+							firstname: firstname,
+							lastname: lastname,
+							email: email,
+							sport: sport,
+							position: position,
+							association: association,
+							team: team,
+							birth_year: birth_year,
+							class_of: class_of,
+							country: country,
+							state: state,
+							street: street
+				})
+		}
 	});
 });
 

@@ -10,7 +10,7 @@ export class EditProfileService {
   constructor(private http: HttpClient) { }
 
   getffile() {
-    return this.http.get('/pullffile?id=61677bf53dc70fb28691066c');
+    return this.http.get('/pullffile?id=6140b39f76123f6d29873e96');
   }
 
 }
