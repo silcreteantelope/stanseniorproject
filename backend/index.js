@@ -88,6 +88,7 @@ app.post('/addffile', function (req, res) {
 	}); 
 });
 
+
 app.get('/pullffile', function (req, res) {
 	var idfind = req.query.id;
 	//console.log(idfind);
@@ -125,45 +126,61 @@ app.post('/editffile', function (req, res) {
   		if(password)
 			bcrypt.genSalt(saltRounds)
 				.then(salt =>  bcrypt.hash(password, salt))
-				.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
-					{
-							firstname: firstname,
-							lastname: lastname,
-							email: email,
-							password: hashedPassword,
-							sport: sport,
-							position: position,
-							association: association,
-							team: team,
-							birth_year: birth_year,
-							class_of: class_of,
-							country: country,
-							state: state,
-							street: street
-				}))
-				.catch(error => {
-					console.error('OMG Why', error);
-				})
-				.finally(() => {
-					db.close();
-				});
+				.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": srcemail},
+				{
+					$set: {
+						firstname,
+						lastname,
+						email,
+						password: hashedPassword,
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						country: country,
+						state: state,
+						street: street,
+						class_of
+					}			
+				},
+			{ ignoreUndefined: true }))
+			.catch(error => {
+				resMessage = 'Error during write to db';
+				console.error('OMG Why', error);
+			})
+			.finally(() => {
+				res.send(resMessage)
+				db.close();
+			});
 		else {
 			console.log("Street="+street);
-			dbo.collection("fanfiles").replaceOne({"email": srcemail},
-					{
-							firstname: firstname,
-							lastname: lastname,
-							email: email,
-							sport: sport,
-							position: position,
-							association: association,
-							team: team,
-							birth_year: birth_year,
-							class_of: class_of,
-							country: country,
-							state: state,
-							street: street
-				})
+			dbo.collection("fanfiles").updateOne({"email": srcemail},
+				{
+					$set: {
+						firstname: firstname,
+						lastname: lastname,
+						email: email,
+						sport: sport,
+						position: position,
+						association: association,
+						team: team,
+						birth_year: birth_year,
+						country: country,
+						state: state,
+						street: street,
+						class_of: class_of
+					}
+				},
+			{ ignoreUndefined: true })
+			.catch(error => {
+				resMessage = 'Error during write to db';
+				console.error('OMG Why', error);
+			})
+			.finally(() => {
+				//res.send(resMessage)
+				db.close();
+			});
 		}
 	});
 });
