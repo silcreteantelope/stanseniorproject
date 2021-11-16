@@ -110,7 +110,7 @@ app.post('/editffile', function (req, res) {
 	const email = req.body.editemail;
 	const sport = req.body.editsport;
 	const position = req.body.editposition;
-	const association = req.body.editposition;
+	const association = req.body.editassociation;
 	const team = req.body.editteam;
 	const birth_year = req.body.editbirth_year;
 	const class_of = req.body.editclass_of;
@@ -125,46 +125,54 @@ app.post('/editffile', function (req, res) {
   		if(password)
 			bcrypt.genSalt(saltRounds)
 				.then(salt =>  bcrypt.hash(password, salt))
-				.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
-					{
-							firstname: firstname,
-							lastname: lastname,
-							email: email,
-							password: hashedPassword,
-							sport: sport,
-							position: position,
-							association: association,
-							team: team,
-							birth_year: birth_year,
-							class_of: class_of,
-							country: country,
-							state: state,
-							street: street
-				}))
+							.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": srcemail},
+				{
+					$set: {
+						firstname,
+						lastname,
+						email,
+						password: hashedPassword,
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						class_of
+					}
+						
+			}, { ignoreUndefined: true }))
+			.catch(error => {
+				resMessage = 'Error during write to db';
+				console.error('OMG Why', error);
+			})
+			.finally(() => {
+				db.close();
+			});
+			else {
+				console.log(position);
+				dbo.collection("fanfiles").updateOne({"email": srcemail},
+				{
+					$set: {
+						firstname,
+						lastname,
+						email,
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						class_of
+					}
+						
+				}, { ignoreUndefined: true })
 				.catch(error => {
+					resMessage = 'Error during write to db';
 					console.error('OMG Why', error);
 				})
 				.finally(() => {
 					db.close();
 				});
-		else {
-			console.log("Street="+street);
-			dbo.collection("fanfiles").replaceOne({"email": srcemail},
-					{
-							firstname: firstname,
-							lastname: lastname,
-							email: email,
-							sport: sport,
-							position: position,
-							association: association,
-							team: team,
-							birth_year: birth_year,
-							class_of: class_of,
-							country: country,
-							state: state,
-							street: street
-				})
-		}
+			}
 	});
 });
 
