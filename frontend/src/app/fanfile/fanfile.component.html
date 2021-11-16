@@ -1,1 +1,75 @@
-<p>fanfile works!</p>
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Register</title>
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="fanfile.component.css">
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<li *ngFor="let element of data">
+		<h2 class="text-center">{{element.firstname}} {{element.lastname}}</h2>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h2>Resume</h2>
+				<p>{{element.firstname}} {{element.lastname}}</p>
+				<p>Association: {{element.association}}</p>
+				<p>Team: {{element.team}}</p>
+				<p>Position: {{element.position}}</p>
+				<p>Birth Year: {{element.birth_year}}</p>
+				<p>Class of: {{element.class_of}}</p>
+			</div>
+			<div class="col-md-8">
+				<h2>Fan Feed</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h2>Videos</h2>
+				<div class="row">
+				<div class="col-md-6">
+					<youtube-player 
+					videoId="YqAml6e-H7U" 
+					suggestedQuality="highres" 
+					[height]="200" 
+					[width]="400" >
+				</youtube-player>
+				<youtube-player 
+					videoId="YqAml6e-H7U" 
+					suggestedQuality="highres" 
+					[height]="200" 
+					[width]="400" >
+				</youtube-player>
+			</div>
+			<div class="col-md-6">
+				<youtube-player 
+					videoId="YqAml6e-H7U" 
+					suggestedQuality="highres" 
+					[height]="200" 
+					[width]="400" >
+				</youtube-player>
+				<youtube-player 
+					videoId="YqAml6e-H7U" 
+					suggestedQuality="highres" 
+					[height]="200" 
+					[width]="400" >
+				</youtube-player>
+				</div></div>
+			</div>
+			<div class="col-md-8">
+				<h2>Social Networks</h2>
+			</div>
+		</div>
+	</li>
+
+	<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+	<script type='text/javascript'></script>
+</body>
+</html>

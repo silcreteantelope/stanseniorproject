@@ -7,11 +7,13 @@ import { FanfileComponent } from "./fanfile/fanfile.component";
 import { LoginComponent } from "./login/login.component";
 import { MainComponent } from "./main/main.component";
 import { RegisterComponent } from "./register/register.component";
+import { VideoComponent } from "./video/video.component";
 
 const routes: Routes = [
     { path: 'editBlog', component: EditBlogComponent },
     { path: 'editProfile', component: EditProfileComponent },
     { path: 'editSocial', component: EditSocialComponent },
+    { path: 'video', component: VideoComponent },
     { path: 'login' , component: LoginComponent},
     { path: 'fanfile' , component: FanfileComponent},
     { path: 'main' , component: MainComponent},

@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+	<br>Add Fan File
 	<form action="/addffile" method="post">
 		name: <input name="firstname" type="text" /> <br />
 		name: <input name="lastname" type="text" /> <br />
@@ -19,14 +20,35 @@
 		password: <input name="password" type="text" /> <br />
 		<input type="submit" />
 	</form>
+	<br>Pull Fan File
 	<form action="/pullffile" method="post">
-		emailfind: <input name="emailfind" type="text" /> <br />
+		id: <input name="idfind" type="text" /> <br />
 		<input type="submit" />
 	</form>
-
+	<br>Login
 	<form action="/login" method="post">
 		email: <input name="email" type="text" /> <br />
 		password: <input name="password" type="text" /> <br />
+		<input type="submit" />
+	</form>
+	<br>Edit Fan File
+	<form action="/editffile" method="post">
+		email to edit entry: <input name="srcemail" type="text" /> <br />
+		new fname: <input name="editfname" type="text" /> <br />
+		new lname: <input name="editlname" type="text" /> <br />
+		new email: <input name="editemail" type="text" /> <br />
+		new sport: <input name="editsport" type="text" /> <br />
+		new position: <input name="editposition" type="text" /> <br />
+		new association: <input name="editassociation" type="text" /> <br />
+		new team: <input name="editteam" type="text" /> <br />
+		new birth_year: <input name="editbirth_year" type="text" /> <br />
+		new class_of: <input name="editclass_of" type="text" /> <br />
+		new password: <input name="editpassword" type="text" /> <br />
+		<input type="submit" />
+	</form>
+	<br>Getid
+	<form action="/getid" method="post">
+		email: <input name="emailfind" type="text" /> <br />
 		<input type="submit" />
 	</form>
 </body>

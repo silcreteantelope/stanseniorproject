@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { YouTubePlayer, YouTubePlayerModule } from '@angular/youtube-player';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +17,7 @@ import { FanfileComponent } from './fanfile/fanfile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { MainComponent } from './main/main.component';
     FanfileComponent,
     LoginComponent,
     RegisterComponent,
-    MainComponent
+    MainComponent,
+    VideoComponent
   ],
   imports: [
+  YouTubePlayerModule,
 	BrowserModule,
   AppRoutingModule,
+  HttpClientModule,
 	RouterModule.forRoot([
     {path: '', component:
     MainComponent}
