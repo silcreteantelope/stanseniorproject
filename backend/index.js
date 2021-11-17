@@ -54,7 +54,7 @@ app.post('/login', function (req, res) {
 				}
 				else
 					res.send('Wrong password');
-				console.log(result);
+				//console.log(result);
 			});
 			db.close();
 		});
@@ -116,25 +116,26 @@ app.post('/addffile', function (req, res) {
 });
 
 app.get('/pullffile', function (req, res) {
-	var idfind = session.userid.replace(/['"]+/g, '');
-	//var idfind = req.query.id;
-	//console.log(idfind);
-	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		var dbo = db.db("test");
-		var ObjectId = require('mongodb').ObjectId;
- 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
-    			if (err) throw err;
-			res.json(result);
-   			db.close();
-  		});
-	}); 
+	if(session.userid) {
+		var idfind = session.userid.replace(/['"]+/g, '');
+		//var idfind = req.query.id;
+		//console.log(idfind);
+		MongoClient.connect(url, function(err, db) {
+	  		if (err) throw err;
+	  		var dbo = db.db("test");
+			var ObjectId = require('mongodb').ObjectId;
+	 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+	    			if (err) throw err;
+				res.json(result);
+	   			db.close();
+	  		});
+		}); 
+	}
 });
 
 app.get('/getffile', function (req, res) {
 	//var idfind = session.userid.replace(/['"]+/g, '');
 	var idfind = req.query.id;
-	console.log(req.query.id);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
@@ -148,7 +149,6 @@ app.get('/getffile', function (req, res) {
 });
 
 app.post('/editffile', function (req, res) {
-	console.log(session.email);
 	const srcemail = req.body.srcemail;
 	const firstname = req.body.editfname;
 	const lastname = req.body.editlname;
@@ -254,7 +254,7 @@ app.post('/getid', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
     			if (err) throw err;
-			console.log(JSON.stringify(result[0]._id));
+			//console.log(JSON.stringify(result[0]._id));
 			res.send(result[0]._id);
    			db.close();
   		});
