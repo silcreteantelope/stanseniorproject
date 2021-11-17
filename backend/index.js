@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const bcrypt = require('bcrypt');
 var MongoClient = require('mongodb').MongoClient;
+var session = require('express-session')
 const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,7 +17,17 @@ const clusterurl =  process.env.DB_URL
 const url = "mongodb+srv://"+user+":"+password+"@"+clusterurl+"/test?retryWrites=true&w=majority";
 const saltRounds= 10;
 
+var session;
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}));
+
 app.get('/', (req, res) => {
+	session=req.session;
     res.sendFile(__dirname+ '/expresspanel.html');
 })
 
@@ -118,6 +129,17 @@ app.post('/editffile', function (req, res) {
 	const state = req.body.editstate;
 	const street = req.body.editstreet;
 	const password = req.body.editpassword;
+
+	const video1 = req.body.video1;
+	const video2 = req.body.video2;
+	const video3 = req.body.video3;
+	const video4 = req.body.video4;
+
+	const instagram = req.body.instagram
+	const twitter = req.body.twitter;
+	const tiktok = req.body.tiktok;
+	const snapchat = req.body.snapchat;
+
 	res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
@@ -137,7 +159,15 @@ app.post('/editffile', function (req, res) {
 						association,
 						team,
 						birth_year,
-						class_of
+						class_of,
+						video1,
+						video2,
+						video3,
+						video4,
+						instagram,
+						twitter,
+						tiktok,
+						snapchat
 					}
 						
 			}, { ignoreUndefined: true }))
@@ -161,7 +191,15 @@ app.post('/editffile', function (req, res) {
 						association,
 						team,
 						birth_year,
-						class_of
+						class_of,
+						video1,
+						video2,
+						video3,
+						video4,
+						instagram,
+						twitter,
+						tiktok,
+						snapchat
 					}
 						
 				}, { ignoreUndefined: true })
@@ -175,6 +213,8 @@ app.post('/editffile', function (req, res) {
 			}
 	});
 });
+
+
 
 app.post('/getid', function (req, res) {
 	var emailfind = req.body.emailfind;

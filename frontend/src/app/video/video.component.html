@@ -20,13 +20,14 @@
             </div>
         </div>
         
-        <div class="container rounded bg-white px-5 mt-5 mb-5">
-            <form action="/addffile" method="post">
+        <div class="container rounded bg-white px-5 mt-5 mb-5" *ngFor="let element of data">
+            <form class = "inputsWrap" data-toggle="validator" role="form" action="/editffile" method="post">
                 <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
-                    Video link 1: <input name="name" type="text" placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 2: <input name="name" type="text" placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 3: <input name="name" type="text" placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 4: <input name="name" type="text" placeholder="Paste a link to a video here..."/> <br />
+                    username=<input name="srcemail" type="text" value={{element.email}} placeholder="email"/> <br><br>
+                    Video link 1: <input name="video1" type="text" value={{element.video1}} placeholder="Paste a link to a video here..."/> <br /><br>
+                    Video link 2: <input name="video2" type="text" value={{element.video2}} placeholder="Paste a link to a video here..."/> <br /><br>
+                    Video link 3: <input name="video3" type="text" value={{element.video3}} placeholder="Paste a link to a video here..."/> <br /><br>
+                    Video link 4: <input name="video4" type="text" value={{element.video4}} placeholder="Paste a link to a video here..."/> <br />
                     <div class="row text-center pt-3 px-5 mx-5">
                         <input type="submit" />
                     </div>
