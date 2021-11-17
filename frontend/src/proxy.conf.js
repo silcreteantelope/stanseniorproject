@@ -4,6 +4,7 @@ const PROXY_CONFIG = [
 		"/login",
 		"/addffile",
 		"/pullffile",
+        "/getffile",
 		"/editffile"
         ],
         target: "http://localhost:3000",

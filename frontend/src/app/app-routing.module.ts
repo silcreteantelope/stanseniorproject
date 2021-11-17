@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'editSocial', component: EditSocialComponent },
     { path: 'video', component: VideoComponent },
     { path: 'login' , component: LoginComponent},
-    { path: 'fanfile' , component: FanfileComponent},
+    { path: 'fanfile/:id' , component: FanfileComponent},
     { path: 'main' , component: MainComponent},
     { path: 'register' , component: RegisterComponent}
 ];

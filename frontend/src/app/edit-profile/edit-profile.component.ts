@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {EditProfileService} from "../edit-profile.service";
+import {FanfileService} from "../pulldata.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,10 +11,10 @@ export class EditProfileComponent implements OnInit {
 
   data:any;
 
-  constructor(private profile: EditProfileService) {
+  constructor(private fanfile: FanfileService) {
   }
 
     ngOnInit() {
-        this.profile.getffile().subscribe(data => this.data = data);
+        this.fanfile.getffile().subscribe(data => this.data = data);
 	}   
 }
