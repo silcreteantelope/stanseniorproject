@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { FanfileService } from "../fanfile.service";
+
 
 @Component({
   selector: 'app-edit-social',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditSocialComponent implements OnInit {
 
-  constructor() { }
+  data:any;
 
-  ngOnInit(): void {
+  constructor(private fanfile: FanfileService) {
   }
 
+    ngOnInit() {
+        this.fanfile.getffile().subscribe(data => this.data = data);
+	}   
 }
