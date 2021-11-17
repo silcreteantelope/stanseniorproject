@@ -49,6 +49,7 @@ app.post('/login', function (req, res) {
 				if(result == true){
 					session=req.session;
 					session.userid=userid;
+					session.email=email;
 					res.send('Logged in successfully');
 				}
 				else
@@ -58,6 +59,11 @@ app.post('/login', function (req, res) {
 			db.close();
 		});
 	}); 
+});
+
+app.post('/signout', function (req, res) {
+	req.session.destroy(function(err) {})
+	res.send("fuck off bitch");
 });
 
 app.post('/addffile', function (req, res) {
@@ -93,6 +99,9 @@ app.post('/addffile', function (req, res) {
 				console.error('OMG Why', error);
 			})
 			.finally(() => {
+				session=req.session;
+				session.userid=userid;
+				session.email=email;
 				db.close();
 			});
 
@@ -139,6 +148,7 @@ app.get('/getffile', function (req, res) {
 });
 
 app.post('/editffile', function (req, res) {
+	console.log(session.email);
 	const srcemail = req.body.srcemail;
 	const firstname = req.body.editfname;
 	const lastname = req.body.editlname;
@@ -171,7 +181,7 @@ app.post('/editffile', function (req, res) {
   		if(password)
 			bcrypt.genSalt(saltRounds)
 				.then(salt =>  bcrypt.hash(password, salt))
-							.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": srcemail},
+							.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": session.email},
 				{
 					$set: {
 						firstname,
@@ -203,7 +213,7 @@ app.post('/editffile', function (req, res) {
 				db.close();
 			});
 			else {
-				dbo.collection("fanfiles").updateOne({"email": srcemail},
+				dbo.collection("fanfiles").updateOne({"email": session.email},
 				{
 					$set: {
 						firstname,
