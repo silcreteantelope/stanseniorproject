@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { FanfileService } from "../fanfile.service";
+import { FanfileService } from "../pulldata.service";
 
 
 @Component({

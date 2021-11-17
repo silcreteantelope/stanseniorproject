@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { VideoComponent } from './video/video.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VideoComponent } from './video/video.component';
     LoginComponent,
     RegisterComponent,
     MainComponent,
-    VideoComponent
+    VideoComponent,
+    DashboardComponent
   ],
   imports: [
   YouTubePlayerModule,

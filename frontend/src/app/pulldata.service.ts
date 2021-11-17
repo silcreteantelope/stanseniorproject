@@ -6,7 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class EditProfileService {
+export class FanfileService {
   constructor(private http: HttpClient) { }
 
   getffile() {
