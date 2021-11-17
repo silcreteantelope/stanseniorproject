@@ -10,7 +10,7 @@ export class FanfileService {
   constructor(private http: HttpClient) { }
 
   getffile() {
-    return this.http.get('/pullffile?id=61942b7365359cfec97264fa');
+    return this.http.get('/pullffile');
   }
 
 }
