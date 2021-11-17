@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const bcrypt = require('bcrypt');
 var MongoClient = require('mongodb').MongoClient;
+const cookieParser = require("cookie-parser");
 var session = require('express-session')
 const port = 3000
 var bodyParser = require("body-parser");
@@ -16,6 +17,8 @@ const password = process.env.DB_PASSWORD
 const clusterurl =  process.env.DB_URL
 const url = "mongodb+srv://"+user+":"+password+"@"+clusterurl+"/test?retryWrites=true&w=majority";
 const saltRounds= 10;
+
+app.use(cookieParser());
 
 var session;
 const oneDay = 1000 * 60 * 60 * 24;
@@ -39,14 +42,18 @@ app.post('/login', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
 			if (err) throw err;
+			var userid=JSON.stringify(result._id);
 			//console.log(result.password);
 			bcrypt.compare(password, result.password, function(err, result) {
 				if(err) { throw (err); }
-				if(result == true)
+				if(result == true){
+					session=req.session;
+					session.userid=userid;
 					res.send('Logged in successfully');
+				}
 				else
 					res.send('Wrong password');
-				//console.log(result);
+				console.log(result);
 			});
 			db.close();
 		});
@@ -100,7 +107,10 @@ app.post('/addffile', function (req, res) {
 });
 
 app.get('/pullffile', function (req, res) {
-	var idfind = req.query.id;
+	console.log("Typeof"+typeof(session.userid)+" "+session.userid);
+	console.log(session.userid.replace(/['"]+/g, ''));
+	var idfind = session.userid.replace(/['"]+/g, '');
+	//var idfind = req.query.id;
 	//console.log(idfind);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
@@ -179,7 +189,6 @@ app.post('/editffile', function (req, res) {
 				db.close();
 			});
 			else {
-				console.log(position);
 				dbo.collection("fanfiles").updateOne({"email": srcemail},
 				{
 					$set: {
@@ -213,8 +222,6 @@ app.post('/editffile', function (req, res) {
 			}
 	});
 });
-
-
 
 app.post('/getid', function (req, res) {
 	var emailfind = req.body.emailfind;
