@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>login</title>
+		<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+		<link rel="stylesheet" href="login.component.css">
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    </head>
+    <body oncontextmenu='return false'>
+	<br>
+	<br>
+        <div class="container-md shadow p-4 px-5 mb-5 bg-white rounded">
+            <div class="row px-2 pt-4 pb-4 justify-content-center text-center">
+                <div class="col-sm-8">
+                    <h1 class="fw-bold text-dark text-opacity-75">FAN - Free Agent NOW!</h1>
+                    <p>Enter the below information to sign in to your account.</p> 
+                </div>
+            </div>
+        </div>
+            <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
+                <form class = "inputsWrap" data-toggle="validator" role="form" action="/login" method="post">
+                    <div class="col-3 p-5">
+                        <div class="row-6">
+                            email: <input name="email" type="text" />
+                        </div>
+                        <div class="row-6">
+                            password: <input name="password" type="text" />
+                        </div>
+                        <div class="p-3">
+                            <input type="submit" value="Signin"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </body>
+</html>
