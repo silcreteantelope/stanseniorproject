@@ -62,8 +62,7 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/signout', function (req, res) {
-	req.session.destroy(function(err) {})
-	res.send("fuck off bitch");
+	req.session.destroy();
 });
 
 app.post('/addffile', function (req, res) {

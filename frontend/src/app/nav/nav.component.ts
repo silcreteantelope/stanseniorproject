@@ -10,7 +10,9 @@ import {FanfileService} from "../pulldata.service";
 })
 export class NavComponent implements OnInit {
 
-  data:any;
+  data:any=[
+  	{email: "not logged it"}
+  ];
 
   constructor(private fanfile: FanfileService) {
   }
