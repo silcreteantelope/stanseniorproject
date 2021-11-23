@@ -163,6 +163,11 @@ app.post('/editffile', function (req, res) {
 	const street = req.body.editstreet;
 	const password = req.body.editpassword;
 
+	var vidID1 = req.body.video1.split('=');
+	var vidID2 = req.body.video1.split('=');
+	var vidID3 = req.body.video1.split('=');
+	var vidID4 = req.body.video1.split('=');
+
 	const video1 = req.body.video1;
 	const video2 = req.body.video2;
 	const video3 = req.body.video3;
@@ -197,6 +202,10 @@ app.post('/editffile', function (req, res) {
 						video2,
 						video3,
 						video4,
+            vidID1,
+            vidID2,
+            vidID3,
+            vidID4,
 						instagram,
 						twitter,
 						tiktok,
@@ -228,6 +237,10 @@ app.post('/editffile', function (req, res) {
 						video2,
 						video3,
 						video4,
+            vidID1,
+            vidID2,
+            vidID3,
+            vidID4,
 						instagram,
 						twitter,
 						tiktok,
