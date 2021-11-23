@@ -13,25 +13,27 @@
   <body oncontextmenu='return false'>
 		<div class="container rounded bg-white mt-5 mb-5">
     	<div class="row">
-        <div class="col-md-8 col-md-offset-2 border-right">
-	    		<div class="col-md-8 col-md-offset-2">
-						<br>
-    				<h6>Link Social Media</h6>
-						<br>
-    		    <div><label class="labels">Instagram</label><input type="text" class="form-control" value="" placeholder="Your instagram link"></div>
-						<br>
-						<div><label class="labels">Twitter</label><input type="text" class="form-control" value="" placeholder="Your twitter link"></div>
-						<br>
-						<div><label class="labels">Tiktok</label><input type="text" class="form-control" value="" placeholder="Your tiktok link"></div>
-						<br>
-						<div><label class="labels">Snapchat</label><input type="text" class="form-control" value="" placeholder="Your snapchat link"></div>
-						<br>
-    		    <div>
-    		    	<button type="submit" class="btn btn-primary">Save</button>
-    		    	<button class="btn btn-default"></button>
-    		    </div>
-						<br>
-					</div>
+        <div class="col-md-8 col-md-offset-2 border-right" *ngFor="let element of data">
+          <form class = "inputsWrap" data-toggle="validator" role="form" action="/editffile" method="post">
+  	    		<div class="col-md-8 col-md-offset-2">
+              <br>
+      				<h6>Link Social Media</h6>
+  						<br>
+      		    <div><label class="labels">Instagram</label><input name="instagram" type="text" class="form-control" value={{element.instagram}} placeholder="Your instagram link"></div>
+  						<br>
+  						<div><label class="labels">Twitter</label><input name="twitter" type="text" class="form-control" value={{element.twitter}} placeholder="Your twitter link"></div>
+  						<br>
+  						<div><label class="labels">Tiktok</label><input name="tiktok" type="text" class="form-control" value={{element.tiktok}} placeholder="Your tiktok link"></div>
+  						<br>
+  						<div><label class="labels">Snapchat</label><input name="snapchat" type="text" class="form-control" value={{element.snapchat}} placeholder="Your snapchat link"></div>
+  						<br>
+      		    <div>
+      		    	<button type="submit" class="btn btn-primary">Save</button>
+      		    	<button class="btn btn-default"></button>
+      		    </div>
+  						<br>
+  					</div>
+          </form>
         </div>
         <div class="col-md-4">
 					<div class="p-3 py-5">

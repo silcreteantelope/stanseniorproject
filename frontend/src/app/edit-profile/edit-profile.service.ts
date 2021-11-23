@@ -6,12 +6,11 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class FanfileService {
+export class EditProfileService {
   constructor(private http: HttpClient) { }
 
-  getffile(id) {
-  	console.log(id);
-    return this.http.get('/getffile'+"?id="+id);
+  getffile() {
+    return this.http.get('/pullffile?id=61942b7365359cfec97264fa');
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { FanfileService } from "../fanfile.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fanfile',
@@ -8,26 +9,16 @@ import { FanfileService } from "../fanfile.service";
   styleUrls: ['./fanfile.component.css']
 })
 export class FanfileComponent implements OnInit {
-  jsonArray =[
-  	{
-  	_id:"614927d687b07372c6681465",
-	name:"Sam",
-	email:"Samthegreat@gmail.com",
-	sport:"Bear Wrestling",
-	position:"Top",
-	association:"Top",
-	team:"Blue Devils",
-	birth_year:2000,
-	class_of:2019,
-	}
-  ]
   
   data:any;
 
-  constructor(private fanfile: FanfileService) {
+  constructor(private fanfile: FanfileService, private route: ActivatedRoute) {
+  	this.route.params.subscribe( params => console.log(params) );
   }
 
     ngOnInit() {
-        this.fanfile.getffile().subscribe(data => this.data = data);
+    	let id = this.route.snapshot.params.id;
+    	console.log(id);
+        this.fanfile.getffile(id).subscribe(data => this.data = data);
 	}   
 }

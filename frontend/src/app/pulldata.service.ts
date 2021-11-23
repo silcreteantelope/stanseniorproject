@@ -9,9 +9,8 @@ import { catchError, retry } from 'rxjs/operators';
 export class FanfileService {
   constructor(private http: HttpClient) { }
 
-  getffile(id) {
-  	console.log(id);
-    return this.http.get('/getffile'+"?id="+id);
+  getffile() {
+    return this.http.get('/pullffile');
   }
 
 }

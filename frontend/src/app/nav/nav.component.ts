@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {FanfileService} from "../pulldata.service";
+
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  data:any=[
+  	{email: "not logged it"}
+  ];
 
-  ngOnInit(): void {
+  constructor(private fanfile: FanfileService) {
   }
 
+    ngOnInit() {
+        this.fanfile.getffile().subscribe(data => this.data = data);
+	}   
 }

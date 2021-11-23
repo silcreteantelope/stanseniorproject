@@ -2,6 +2,8 @@ const express = require('express')
 const app = express();
 const bcrypt = require('bcrypt');
 var MongoClient = require('mongodb').MongoClient;
+const cookieParser = require("cookie-parser");
+var session = require('express-session')
 const port = 3000
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,7 +18,19 @@ const clusterurl =  process.env.DB_URL
 const url = "mongodb+srv://"+user+":"+password+"@"+clusterurl+"/test?retryWrites=true&w=majority";
 const saltRounds= 10;
 
+app.use(cookieParser());
+
+var session;
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}));
+
 app.get('/', (req, res) => {
+	session=req.session;
     res.sendFile(__dirname+ '/expresspanel.html');
 })
 
@@ -28,11 +42,16 @@ app.post('/login', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
 			if (err) throw err;
+			var userid=JSON.stringify(result._id);
 			//console.log(result.password);
 			bcrypt.compare(password, result.password, function(err, result) {
 				if(err) { throw (err); }
-				if(result == true)
+				if(result == true){
+					session=req.session;
+					session.userid=userid;
+					session.email=email;
 					res.send('Logged in successfully');
+				}
 				else
 					res.send('Wrong password');
 				//console.log(result);
@@ -40,6 +59,10 @@ app.post('/login', function (req, res) {
 			db.close();
 		});
 	}); 
+});
+
+app.post('/signout', function (req, res) {
+	req.session.destroy();
 });
 
 app.post('/addffile', function (req, res) {
@@ -75,6 +98,9 @@ app.post('/addffile', function (req, res) {
 				console.error('OMG Why', error);
 			})
 			.finally(() => {
+				session=req.session;
+				session.userid=userid;
+				session.email=email;
 				db.close();
 			});
 
@@ -89,8 +115,26 @@ app.post('/addffile', function (req, res) {
 });
 
 app.get('/pullffile', function (req, res) {
+	if(session.userid) {
+		var idfind = session.userid.replace(/['"]+/g, '');
+		//var idfind = req.query.id;
+		//console.log(idfind);
+		MongoClient.connect(url, function(err, db) {
+	  		if (err) throw err;
+	  		var dbo = db.db("test");
+			var ObjectId = require('mongodb').ObjectId;
+	 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+	    			if (err) throw err;
+				res.json(result);
+	   			db.close();
+	  		});
+		}); 
+	}
+});
+
+app.get('/getffile', function (req, res) {
+	//var idfind = session.userid.replace(/['"]+/g, '');
 	var idfind = req.query.id;
-	console.log(idfind);
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("test");
@@ -110,36 +154,100 @@ app.post('/editffile', function (req, res) {
 	const email = req.body.editemail;
 	const sport = req.body.editsport;
 	const position = req.body.editposition;
-	const association = req.body.editposition;
+	const association = req.body.editassociation;
 	const team = req.body.editteam;
 	const birth_year = req.body.editbirth_year;
 	const class_of = req.body.editclass_of;
+	const country = req.body.editcountry;
+	const state = req.body.editstate;
+	const street = req.body.editstreet;
 	const password = req.body.editpassword;
+
+	var vidID1 = req.body.video1.split('=');
+	var vidID2 = req.body.video1.split('=');
+	var vidID3 = req.body.video1.split('=');
+	var vidID4 = req.body.video1.split('=');
+
+	const video1 = vidID1[1];
+	const video2 = vidID2[1];
+	const video3 = vidID3[1];
+	const video4 = vidID4[1];
+
+	const instagram = req.body.instagram
+	const twitter = req.body.twitter;
+	const tiktok = req.body.tiktok;
+	const snapchat = req.body.snapchat;
+
 	res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		const dbo = db.db("test");
-		bcrypt.genSalt(saltRounds)
-			.then(salt =>  bcrypt.hash(password, salt))
-			.then(hashedPassword => dbo.collection("fanfiles").replaceOne({"email": srcemail},
+  		if(password)
+			bcrypt.genSalt(saltRounds)
+				.then(salt =>  bcrypt.hash(password, salt))
+							.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": session.email},
 				{
-						firstname: firstname,
-						lastname: lastname,
-						email: email,
+					$set: {
+						firstname,
+						lastname,
+						email,
 						password: hashedPassword,
-						sport: sport,
-						position: position,
-						association: association,
-						team: team,
-						birth_year: birth_year,
-						class_of: class_of
-			}))
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						class_of,
+						video1,
+						video2,
+						video3,
+						video4,
+						instagram,
+						twitter,
+						tiktok,
+						snapchat
+					}
+						
+			}, { ignoreUndefined: true }))
 			.catch(error => {
+				resMessage = 'Error during write to db';
 				console.error('OMG Why', error);
 			})
 			.finally(() => {
 				db.close();
 			});
+			else {
+				dbo.collection("fanfiles").updateOne({"email": session.email},
+				{
+					$set: {
+						firstname,
+						lastname,
+						email,
+						sport,
+						position,
+						association,
+						team,
+						birth_year,
+						class_of,
+						video1,
+						video2,
+						video3,
+						video4,
+						instagram,
+						twitter,
+						tiktok,
+						snapchat
+					}
+						
+				}, { ignoreUndefined: true })
+				.catch(error => {
+					resMessage = 'Error during write to db';
+					console.error('OMG Why', error);
+				})
+				.finally(() => {
+					db.close();
+				});
+			}
 	});
 });
 
@@ -150,7 +258,7 @@ app.post('/getid', function (req, res) {
   		var dbo = db.db("test");
  		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
     			if (err) throw err;
-			console.log(JSON.stringify(result[0]._id));
+			//console.log(JSON.stringify(result[0]._id));
 			res.send(result[0]._id);
    			db.close();
   		});
