@@ -169,10 +169,10 @@ app.post('/editffile', function (req, res) {
 	const video3 = req.body.video3;
 	const video4 = req.body.video4;
 	
-	var vidID1 = req.body.video1.split('=');
-	var vidID2 = req.body.video1.split('=');
-	var vidID3 = req.body.video1.split('=');
-	var vidID4 = req.body.video1.split('=');
+	if(video1) var vidID1 = req.body.video1.split('=');
+	if(video2) var vidID2 = req.body.video1.split('=');
+	if(video3) var vidID3 = req.body.video1.split('=');
+	if(video4) var vidID4 = req.body.video1.split('=');
 
 	const instagram = req.body.instagram
 	const twitter = req.body.twitter;
