@@ -1,36 +1,99 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width, initial-scale=1'>
-		<title>FAN Edit Blog</title>
-		<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-		<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-		<link rel="stylesheet" href="editProfileStyle.css">
-		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <title>Blog</title>
     </head>
-    <body oncontextmenu='return false'>
-        <div class="container-md shadow p-4 px-5 mb-5 bg-white rounded">
-            <div class="row px-2 pt-4 pb-4 justify-content-center text-center">
-                <div class="col-sm-8">
-                    <h1 class="fw-bold text-dark text-opacity-75">FAN - Free Agent NOW!</h1>
-                    <p>Paste links to videos of your performances below, and click submit to save them to your FAN File.</p> 
+    <body class="container">
+        <div id="mySidenav" class="sidenav col-2 px-4 pt-4">
+            <h1 class="blog-heading">Choose Topics</h1>
+            <p class="blog-subheading">This article will appear in</p>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hockey
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Basketball</button>
+                    <button class="dropdown-item" type="button">Baseball</button>
+                    <button class="dropdown-item" type="button">Hockey</button>
+                    <button class="dropdown-item" type="button">Football</button>
+                    <button class="dropdown-item" type="button">Soccer</button>
                 </div>
             </div>
+            <hr>
+            <h1 class="blog-heading">Tags</h1>
         </div>
-        
-        <div class="container rounded bg-white px-5 mt-5 mb-5">
-            <form action="/addffile" method="post">
-                <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
-                    video link 1: <input name="name" type="text" placeholder="paste a link to a video here..."/> <br />
-                    video link 2: <input name="name" type="text" placeholder="paste a link to a video here..."/> <br />
-                    video link 3: <input name="name" type="text" placeholder="paste a link to a video here..."/> <br />
-                    video link 4: <input name="name" type="text" placeholder="paste a link to a video here..."/> <br />
-                    <div class="row text-center pt-3 px-5 mx-5">
-                        <input type="submit" />
+        <div class="row justify-content-around mt-4 mb-4 page-content">
+            <div class="col-8 px-4 pt-4 post-background">
+                <h1 class="blog-heading pb-1">New Post</h1>
+                <div class="d-inline-flex">
+                    <div class="col-1 pt-2">
+                        <img class="profile-image" src="blog-pic.png" alt="Jared Waimon">
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <p class="blog-heading mb-0 mt-0">Blog Title</p>  
+                            <p class="blog-subheading">Last edited 25 minutes ago by <span class="inline-username">Jared Waimon</span></p>    
+                        </div>
+                        <div class="row bg-light border-top border-bottom">
+                            <p>text logos go here</p>
+                        </div> 
+                        <div class="row mt-3">
+                            <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. Tempus urna et pharetra pharetra. Facilisis leo vel fringilla est ullamcorper eget. Volutpat est velit egestas dui. Quis viverra nibh cras pulvinar. At quis risus sed vulputate odio ut. Accumsan lacus vel facilisis volutpat est. Tempus imperdiet nulla malesuada pellentesque elit. Lacus laoreet non curabitur gravida arcu ac tortor dignissim. Facilisis mauris sit amet massa vitae tortor. In vitae turpis massa sed elementum tempus. Maecenas volutpat blandit aliquam etiam erat. Duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Vitae nunc sed velit dignissim sodales ut eu. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Mauris augue neque gravida in fermentum. In aliquam sem fringilla ut morbi. Sed augue lacus viverra vitae congue eu consequat. <br><br>
+                                Ornare lectus sit amet est placerat in egestas erat. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Donec ultrices tincidunt arcu non sodales neque. Nunc sed augue lacus viverra vitae congue eu. Tortor id aliquet lectus proin. Sagittis orci a scelerisque purus semper eget. Varius sit amet mattis vulputate enim nulla aliquet. Et odio pellentesque diam volutpat commodo sed egestas. At consectetur lorem donec massa sapien faucibus. Lorem donec massa sapien faucibus et. At in tellus integer feugiat scelerisque varius morbi enim. Euismod elementum nisi quis eleifend. Porta nibh venenatis cras sed felis. Tortor pretium viverra suspendisse potenti nullam ac. Consectetur adipiscing elit ut aliquam purus. Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Tellus in metus vulputate 
+                                eu scelerisque felis.</p>
+                        </div>    
                     </div>
                 </div>
-            </form>
+            </div>  
+            <div class="recent-post-background col-3 pl-4 pt-4">
+                <h1 class="blog-heading">Recent Posts</h1>
+                <hr>
+                <div class="row align-items-center">
+                    <div class="d-inline-flex pt-3">
+                        <div class="col-4">
+                            <img class="post-images" src="blog-post3.png" alt="Jared Waimon">
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <p class="blog-heading mb-0 mt-0">Blog Post 3 Title Goes Here</p>  
+                                <p class="blog-subheading">September 25, 2021</p>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="d-inline-flex pt-3">
+                        <div class="col-4">
+                            <img class="post-images" src="blog-post2.png" alt="Jared Waimon">
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <p class="blog-heading mb-0 mt-0">Blog Post 2 Title Goes Here</p>  
+                                <p class="blog-subheading">September 25, 2021</p>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="d-inline-flex pt-3">
+                        <div class="col-4">
+                            <img class="post-images" src="blog-post1.png" alt="Jared Waimon">
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <p class="blog-heading mb-0 mt-0">Blog Post 1 Title Goes Here</p>  
+                                <p class="blog-subheading">September 25, 2021</p>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
     </body>
-</html>
+</html>    
