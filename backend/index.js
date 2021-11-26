@@ -63,9 +63,6 @@ app.post('/login', function (req, res) {
 
 app.post('/signout', function (req, res) {
 	session = null;
-	console.log("signed out maybe");
-	console.log(session);
-	console.log(req.session);
 });
 
 app.post('/addffile', function (req, res) {
