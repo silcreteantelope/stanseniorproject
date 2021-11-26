@@ -10,6 +10,9 @@ body{
     background-color: #fff; /* Black*/
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
+.sidebar-text{
+    font-size: .8em;
+}
 .page-content{
     margin-left: 15%;
 }

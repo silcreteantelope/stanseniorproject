@@ -9,23 +9,51 @@
         <title>Blog</title>
     </head>
     <body class="container">
-        <div id="mySidenav" class="sidenav col-2 px-4 pt-4">
-            <h1 class="blog-heading">Choose Topics</h1>
-            <p class="blog-subheading">This article will appear in</p>
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hockey
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Basketball</button>
-                    <button class="dropdown-item" type="button">Baseball</button>
-                    <button class="dropdown-item" type="button">Hockey</button>
-                    <button class="dropdown-item" type="button">Football</button>
-                    <button class="dropdown-item" type="button">Soccer</button>
+        <div id="mySidenav" class="sidenav col-2 px-4 pt-4 d-flex align-content-between flex-wrap">
+            <div id="choose-topics">
+                <h1 class="blog-heading">Choose Topics</h1>
+                <p class="blog-subheading">This article will appear in</p>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sidebar-text">Hockey</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Basketball</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Baseball</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Hockey</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Football</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Soccer</span></button>
+                    </div>
                 </div>
             </div>
             <hr>
-            <h1 class="blog-heading">Tags</h1>
+            <div id="tags">
+                <h1 class="blog-heading">Tags</h1>
+                <div class="border">
+                    <p class="sidebar-text">Goalie, Puck, MVP, <br>Champions, Undefeated, <br>Wins</p>
+                </div>
+            </div>
+            <hr>
+            <div id="cover-photo">
+                <h1 class="blog-heading">Cover Photo</h1><br>
+                <div class="row sidebar-text">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-outline-primary"><span class="sidebar-text">Choose File</span></button>                    
+                    </div>
+                    <div class="col-6 pt-2">
+                        <p class="coverphoto-filename">No File Chosen</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="publish" class="row justify-content-around mb-3 pb-3">
+                <div class="col-4">
+                    <button type="button" class="btn btn-light"><span class="sidebar-text">Cancel</span></button>
+                </div>
+                <div class="col-8">
+                    <button type="button" class="btn btn-warning"><span class="sidebar-text"><b>Publish Article</b></span></button>
+                </div>
+            </div>
         </div>
         <div class="row justify-content-around mt-4 mb-4 page-content">
             <div class="col-8 px-4 pt-4 post-background">
