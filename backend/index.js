@@ -62,7 +62,7 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/signout', function (req, res) {
-	req.session.destroy();
+	session = null;
 });
 
 app.post('/addffile', function (req, res) {
