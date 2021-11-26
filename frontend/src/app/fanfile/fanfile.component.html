@@ -27,7 +27,7 @@
 				<p>Class of: {{element.class_of}}</p>
 			</div>
 			<div class="col-md-8">
-				<h2>Fan Feed</h2>
+				<h2>Blog</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -36,13 +36,13 @@
 				<div class="row">
 				<div class="col-md-6">
 					<youtube-player 
-					videoId="YqAml6e-H7U" 
+					videoId={{element.vidID1[1]}} 
 					suggestedQuality="highres" 
 					[height]="200" 
 					[width]="400" >
 				</youtube-player>
 				<youtube-player 
-					videoId="YqAml6e-H7U" 
+					videoId={{element.vidID2[1]}}
 					suggestedQuality="highres" 
 					[height]="200" 
 					[width]="400" >
@@ -67,11 +67,19 @@
 				</div></div>
 			</div>
 			<div class="col-md-8">
-				<h2>Social Networks</h2>
-				<p>Instagram: {{element.instagram}}</p>
-				<p>Twitter: {{element.twitter}}</p>
-				<p>Tiktok: {{element.tiktok}}</p>
-				<p>Snapchat: {{element.snapchat}}</p>
+				<h2>Networks</h2>
+				<a href={{element.instagram}}>
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href={{element.twitter}}>
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href={{element.tiktok}}>
+					<p>Tiktok image here </p>
+				</a>
+				<a href={{element.snapchat}}>
+					<i class="fab fa-snapchat"></i>
+				</a>
 			</div>
 		</div>
 	</li>
