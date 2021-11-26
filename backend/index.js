@@ -134,17 +134,19 @@ app.get('/pullffile', function (req, res) {
 
 app.get('/getffile', function (req, res) {
 	//var idfind = session.userid.replace(/['"]+/g, '');
-	var idfind = req.query.id;
-	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		var dbo = db.db("test");
-		var ObjectId = require('mongodb').ObjectId;
- 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
-    			if (err) throw err;
-			res.json(result);
-   			db.close();
-  		});
-	}); 
+	if(req.query.id !== "undefined") {
+		var idfind = req.query.id;
+		MongoClient.connect(url, function(err, db) {
+	  		if (err) throw err;
+	  		var dbo = db.db("test");
+			var ObjectId = require('mongodb').ObjectId;
+	 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+	    			if (err) throw err;
+				res.json(result);
+	   			db.close();
+	  		});
+		}); 
+	}
 });
 
 app.post('/editffile', function (req, res) {
