@@ -1,0 +1,55 @@
+body{
+    background-color: #f5f5f5;
+}
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #fff; /* Black*/
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+.sidebar-text{
+    font-size: .8em;
+}
+.page-content{
+    margin-left: 15%;
+}
+.post-background{
+    border-radius: 20px;
+    border: solid 1px #f1f1f5;
+    background-color: #fff;
+}
+
+.blog-heading{
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    color: #171725; 
+}
+.blog-subheading{
+    font-family: Roboto;
+    font-size: 12px;
+    color: #92929d;
+}
+.inline-username{
+    color: #fdbc11; 
+}
+.profile-image{
+    height: 2em;
+}
+.post-images{
+    height: 5em;
+}
+.blog-text{
+    font-family: Roboto;
+    font-size: .9rem;
+    color: #696974;
+  
+}
+.recent-post-background{
+    border-radius: 20px;
+    border: solid 1px #f1f1f5;
+    background-color: #fff;  
+}
