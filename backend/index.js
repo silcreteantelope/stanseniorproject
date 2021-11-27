@@ -181,8 +181,8 @@ app.post('/editffile', function (req, res) {
 	const tiktok = req.body.tiktok;
 	const snapchat = req.body.snapchat;
 
-	if(req.body.newblogtitle) const newblogtitle=req.body.newblogtitle;
-	if(req.body.newblog) const newblog=req.body.newblog;
+	const newblogtitle=req.body.newblogtitle;
+	const newblog=req.body.newblog;
 
 	res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
@@ -215,7 +215,9 @@ app.post('/editffile', function (req, res) {
 				instagram,
 				twitter,
 				tiktok,
-				snapchat
+				snapchat,
+				newblogtitle,
+				newblog
 			}
 
 		}, { ignoreUndefined: true }))
@@ -250,7 +252,9 @@ app.post('/editffile', function (req, res) {
 					instagram,
 					twitter,
 					tiktok,
-					snapchat
+					snapchat,
+					newblogtitle,
+					newblog
 				}
 
 			}, { ignoreUndefined: true })
