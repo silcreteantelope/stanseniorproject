@@ -1,0 +1,23 @@
+.section-heading{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;  
+}
+::placeholder{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    color: #adadad;
+    padding-left: 2px;
+}
+input[type=text]{
+    padding: 2%;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    color: #111111;
+}
+textarea{
+    resize: none;
+}
