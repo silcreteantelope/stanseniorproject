@@ -22,10 +22,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['fanfile/'+element._id]"  >Fanfile</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="register">Register for an Account</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="login">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
                 </li>
                 <li>
                     <h2>{{element?.email}}</h2>
