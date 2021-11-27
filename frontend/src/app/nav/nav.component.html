@@ -4,7 +4,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"  *ngFor="let element of data">
             <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -14,19 +14,25 @@
                         Edit File
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Edit Blog</a></li>
-                        <li><a class="dropdown-item" href="#">Edit Scoial</a></li>
-                        <li><a class="dropdown-item" href="#">Edit Video</a></li>
+                        <li><a class="dropdown-item"  routerLink="editProfile">Edit Profile</a></li>
+                        <li><a class="dropdown-item"  routerLink="editBlog">Edit Blog</a></li>
+                        <li><a class="dropdown-item"  routerLink="editSocial">Edit Scoial</a></li>
+                        <li><a class="dropdown-item"  routerLink="video">Edit Video</a></li>
                         <li><hr class="dropdown-divider"></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register for an Account</a>
+                    <a class="nav-link" routerLink="register">Register for an Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log in</a>
+                    <a class="nav-link" routerLink="login">Log in</a>
                 </li>
+                <li>
+                    <h2>{{element?.email}}</h2>
+                </li>
+                <form class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
+                                   <button type="submit" class="btn btn-primary profile-button" value="Signout" type="button"><input type="submit" value="Signout"/></button>
+                </form>
             </ul>
         </div>
     </div>
@@ -77,3 +83,4 @@
         </div>
     </div>
 </nav>
+-->
