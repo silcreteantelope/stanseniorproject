@@ -23,24 +23,24 @@ app.use(cookieParser());
 var session;
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
-    saveUninitialized:true,
-    cookie: { maxAge: oneDay },
-    resave: false 
+	secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+	saveUninitialized:true,
+	cookie: { maxAge: oneDay },
+	resave: false 
 }));
 
 app.get('/', (req, res) => {
 	session=req.session;
-    res.sendFile(__dirname+ '/expresspanel.html');
+	res.sendFile(__dirname+ '/expresspanel.html');
 })
 
 app.post('/login', function (req, res) {
 	var email = req.body.email;
 	var password = req.body.password;
 	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		var dbo = db.db("test");
- 		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
+		if (err) throw err;
+		var dbo = db.db("test");
+		dbo.collection("fanfiles").findOne({email:email}, function(err, result) {
 			if (err) throw err;
 			var userid=JSON.stringify(result._id);
 			//console.log(result.password);
@@ -78,40 +78,40 @@ app.post('/addffile', function (req, res) {
 	const password = req.body.password;
 	res.send('Registered successfully.');
 	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		const dbo = db.db("test");
+		if (err) throw err;
+		const dbo = db.db("test");
 		bcrypt.genSalt(saltRounds)
-			.then(salt =>  bcrypt.hash(password, salt))
-			.then(hashedPassword => dbo.collection("fanfiles").insertOne({
-				firstname,
-				lastname,
-				email,
-				password: hashedPassword,
-				sport,
-				position,
-				association,
-				team,
-				birth_year,
-				class_of
-			}))
-			.catch(error => {
-				console.error('OMG Why', error);
-			})
-			.finally(() => {
-				session=req.session;
-				session.userid=userid;
-				session.email=email;
-				db.close();
-			});
+		.then(salt =>  bcrypt.hash(password, salt))
+		.then(hashedPassword => dbo.collection("fanfiles").insertOne({
+			firstname,
+			lastname,
+			email,
+			password: hashedPassword,
+			sport,
+			position,
+			association,
+			team,
+			birth_year,
+			class_of
+		}))
+		.catch(error => {
+			console.error('OMG Why', error);
+		})
+		.finally(() => {
+			session=req.session;
+			session.userid=userid;
+			session.email=email;
+			db.close();
+		});
 
 
-  		// var myobj = {name: name, email: email, sport: sport, password: password};
- 		// dbo.collection("fanfiles").insertOne(myobj, function(err, res) {
-    	// 		if (err) throw err;
-    	// 		console.log("1 document inserted");
-   		// 	db.close();
-  		// });
-	}); 
+		// var myobj = {name: name, email: email, sport: sport, password: password};
+		// dbo.collection("fanfiles").insertOne(myobj, function(err, res) {
+		// 		if (err) throw err;
+		// 		console.log("1 document inserted");
+		// 	db.close();
+		// });
+}); 
 });
 
 app.get('/pullffile', function (req, res) {
@@ -120,14 +120,14 @@ app.get('/pullffile', function (req, res) {
 		//var idfind = req.query.id;
 		//console.log(idfind);
 		MongoClient.connect(url, function(err, db) {
-	  		if (err) throw err;
-	  		var dbo = db.db("test");
+			if (err) throw err;
+			var dbo = db.db("test");
 			var ObjectId = require('mongodb').ObjectId;
-	 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
-	    			if (err) throw err;
+			dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+				if (err) throw err;
 				res.json(result);
-	   			db.close();
-	  		});
+				db.close();
+			});
 		}); 
 	}
 });
@@ -137,14 +137,14 @@ app.get('/getffile', function (req, res) {
 	if(req.query.id !== "undefined") {
 		var idfind = req.query.id;
 		MongoClient.connect(url, function(err, db) {
-	  		if (err) throw err;
-	  		var dbo = db.db("test");
+			if (err) throw err;
+			var dbo = db.db("test");
 			var ObjectId = require('mongodb').ObjectId;
-	 		dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
-	    			if (err) throw err;
+			dbo.collection("fanfiles").find( {"_id": ObjectId(idfind)} ).toArray(function(err, result) {
+				if (err) throw err;
 				res.json(result);
-	   			db.close();
-	  		});
+				db.close();
+			});
 		}); 
 	}
 });
@@ -181,41 +181,79 @@ app.post('/editffile', function (req, res) {
 	const tiktok = req.body.tiktok;
 	const snapchat = req.body.snapchat;
 
+	if(req.body.newblogtitle) const newblogtitle=req.body.newblogtitle;
+	if(req.body.newblog) const newblog=req.body.newblog;
+
 	res.send('Edited successfully.');
 	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		const dbo = db.db("test");
-  		if(password)
+		if (err) throw err;
+		const dbo = db.db("test");
+		if(password)
 			bcrypt.genSalt(saltRounds)
-				.then(salt =>  bcrypt.hash(password, salt))
-							.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": session.email},
-				{
-					$set: {
-						firstname,
-						lastname,
-						email,
-						password: hashedPassword,
-						sport,
-						position,
-						association,
-						team,
-						birth_year,
-						class_of,
-						video1,
-						video2,
-						video3,
-						video4,
-            vidID1,
-            vidID2,
-            vidID3,
-            vidID4,
-						instagram,
-						twitter,
-						tiktok,
-						snapchat
-					}
-						
-			}, { ignoreUndefined: true }))
+		.then(salt =>  bcrypt.hash(password, salt))
+		.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": session.email},
+		{
+			$set: {
+				firstname,
+				lastname,
+				email,
+				password: hashedPassword,
+				sport,
+				position,
+				association,
+				team,
+				birth_year,
+				class_of,
+				video1,
+				video2,
+				video3,
+				video4,
+				vidID1,
+				vidID2,
+				vidID3,
+				vidID4,
+				instagram,
+				twitter,
+				tiktok,
+				snapchat
+			}
+
+		}, { ignoreUndefined: true }))
+		.catch(error => {
+			resMessage = 'Error during write to db';
+			console.error('OMG Why', error);
+		})
+		.finally(() => {
+			db.close();
+		});
+		else {
+			dbo.collection("fanfiles").updateOne({"email": session.email},
+			{
+				$set: {
+					firstname,
+					lastname,
+					email,
+					sport,
+					position,
+					association,
+					team,
+					birth_year,
+					class_of,
+					video1,
+					video2,
+					video3,
+					video4,
+					vidID1,
+					vidID2,
+					vidID3,
+					vidID4,
+					instagram,
+					twitter,
+					tiktok,
+					snapchat
+				}
+
+			}, { ignoreUndefined: true })
 			.catch(error => {
 				resMessage = 'Error during write to db';
 				console.error('OMG Why', error);
@@ -223,56 +261,21 @@ app.post('/editffile', function (req, res) {
 			.finally(() => {
 				db.close();
 			});
-			else {
-				dbo.collection("fanfiles").updateOne({"email": session.email},
-				{
-					$set: {
-						firstname,
-						lastname,
-						email,
-						sport,
-						position,
-						association,
-						team,
-						birth_year,
-						class_of,
-						video1,
-						video2,
-						video3,
-						video4,
-            vidID1,
-            vidID2,
-            vidID3,
-            vidID4,
-						instagram,
-						twitter,
-						tiktok,
-						snapchat
-					}
-						
-				}, { ignoreUndefined: true })
-				.catch(error => {
-					resMessage = 'Error during write to db';
-					console.error('OMG Why', error);
-				})
-				.finally(() => {
-					db.close();
-				});
-			}
+		}
 	});
 });
 
 app.post('/getid', function (req, res) {
 	var emailfind = req.body.emailfind;
 	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		var dbo = db.db("test");
- 		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
-    			if (err) throw err;
+		if (err) throw err;
+		var dbo = db.db("test");
+		dbo.collection("fanfiles").find({email:emailfind}).toArray(function(err, result) {
+			if (err) throw err;
 			//console.log(JSON.stringify(result[0]._id));
 			res.send(result[0]._id);
-   			db.close();
-  		});
+			db.close();
+		});
 	}); 
 });
 
