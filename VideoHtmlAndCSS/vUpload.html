@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="vstyles.css">
+  <title>Document</title>
+</head>
+<body>
+	<header class="pageheader">
+		<h1 class="logo-text">FreeAgentNow</h1>
+		<div class="sign-out-btn">Sign Out</div>
+  </header>
+	<br>
+	<br>
+	<div class="page">
+		<div class="row">
+			<div class="col-5">
+				<div class="card fixit">
+					<div class="drag-area">
+						<div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+    				<header>Drag & Drop to Upload</header>
+    				<span>or</span>
+    				<input type="file" hidden>
+  				</div>
+					<button type="button" class="btn btn-warning uploadbtn"><i class="fas fa-cloud-upload-alt"></i><b>Choose to Upload</b></button>
+					<form>
+  					<label class="cardtext" for="ylink">Youtube Link:</label><br>
+  					<input type="text" id="ylink" name="ylink" placeholder="Youtube Link"><br>
+  					<label class="cardtext" for="title">Vidoe Title:</label><br>
+  					<input type="text" id="title" name="title" placeholder="Vidoe Title">
+						
+						<label class="cardtext" for="psettings">Privacy Settings:</label><br>
+
+						<select name="psettings" id="psettings">
+  						<option value="anyone">Anyone can see this video</option>
+  						<option value="followed">Only people I follow can see this video</option>
+  						<option value="me">Only I can see this video</option>
+						</select>
+					</form>
+				</div>
+			</div>
+			<div class="col-7">	
+				<div class="row">
+					<div>
+						<h4 class="FContainer">Featured Videos</h4>
+					</div>
+					<div class="DotsContainer">
+						<img class="Dots" src="dots.jpg">
+					</div>
+				</div>
+				<div class="row">
+					<div class="video">
+						<iframe  width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+						<br>
+						<b>Video Title</b>
+						<br>
+						<small>Upload Date</small>
+					</div>
+					<div class="video">
+						<iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+						<br>
+						<b>Video Title</b>
+						<br>
+						<small>Upload Date</small>
+					</div>
+				</div>
+				<div class="row">
+					<div class="video">
+						<iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+						<br>
+						<b>Video Title</b>
+						<br>
+						<small>Upload Date</small>
+					</div>
+					<div class="video">
+						<iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+						<br>
+						<b>Video Title</b>
+						<br>
+						<small>Upload Date</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <footer>
+		<div class="bottom-logo-text">FREEAGENTNOW</div> 
+		<div class="catchphrase">Get seen. Get heard. Get signed.</div>
+  </footer>
+	
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

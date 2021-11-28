@@ -1,0 +1,153 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.pageheader {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    color: black;
+    margin-bottom: 15px;
+    padding: 0 100px 0 100px;
+    border-bottom: 1px black solid;
+}
+
+footer {
+    background-color: #000;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 100px 0 100px;
+    font-family: Montserrat;
+    align-items: center;
+}
+.catchphrase {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fdbc11;
+}
+
+.bottom-logo-text {
+    font-style: italic;
+    color: #fff;
+    font-family: Monteserrat;
+    font-size: 16px;
+    margin: 7px 489px 11px 0;
+}
+
+.logo-text {
+    font-weight: bold;
+}
+
+.sign-out-btn {
+    font-weight: bold;
+}
+
+
+.drag-area{
+  margin: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #f1f1f5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.drag-area.active{
+  border: 2px solid #fff;
+}
+.drag-area .icon{
+  font-size: 100px;
+  color: #fff;
+}
+.drag-area header{
+	margin-top: 100px;
+  font-size: 30px;
+  font-weight: 500;
+	background-color: #f1f1f5;
+  color: black;
+	align-content: center;
+	text-align: center;
+}
+.drag-area span{
+  font-size: 25px;
+  font-weight: 500;
+  color: black;
+  margin: 10px 0 15px 0;
+}
+.drag-area button{
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #5256ad;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.drag-area img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.Dots {
+  width: 40px;
+  height: 40px;
+}
+.FContainer{
+	margin-left: 40px;
+	margin-right: 600px;
+	font-weight: bold;
+}
+.DotsContainer{
+	margin-left: 40px;
+}
+.video{
+	margin-bottom: 80px;
+	margin-top: 20px;
+  margin-left: 20px;
+	margin-right: 20px;
+}
+iframe{
+	border-radius: 10px;
+}
+
+.cardtext{
+	margin: 20px;
+	font-weight: 500;
+}
+
+input{
+	margin: 20px;
+	border: none;
+	border-color: transparent;
+	border-bottom: solid;
+	border-color: #adadad;
+	width: 90%;
+}
+
+select{
+	margin: 20px;
+	border: none;
+	border-color: transparent;
+	border-bottom: solid;
+	border-color: #adadad;
+	width: 90%;
+}
+.page{
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+.uploadbtn{
+	margin: 20px;
+}
+.fixit{
+	height: 95%;
+}
