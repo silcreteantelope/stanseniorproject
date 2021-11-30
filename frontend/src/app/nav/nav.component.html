@@ -34,12 +34,12 @@
                     <a class="nav-link" routerLink="dashboard">Dashboard</a>
                 </li>
                 <li>
-                    <h2>{{element?.email}}</h2>
+                    <a class="nav-link">Hello, {{element?.name}}</a>
                 </li>
                 <form class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
-                                   <button type="submit" class="btn btn-primary profile-button" value="Signout" type="button"><input type="submit" value="Signout"/></button>
-                </form>
-            </ul>
-        </div>
+                    <input type="submit" class="btn btn-warning mx-2" value="Signout">
+            </form>
+        </ul>
     </div>
+</div>
 </nav>
