@@ -9,62 +9,63 @@
         <title>Resume</title>
     </head>
     <body class="container bg-light">
+      <br><br><br>
         <form class = "inputsWrap" data-toggle="validator" role="form" action="/editffile" method="post">
-            <div class="row">
+            <div class="row" *ngFor="let element of data">
                 <div id="first-column" class="col-3">
                     <div id="profile-picture" class="text-center pb-3">
-                        <img class="rounded-circle" src="blog-pic.png" alt="Jared Waimon">
+                        <img class="rounded-circle" src="assets/img/blog-pic.png" alt="Jared Waimon">
                     </div>
                     <div id="fan-details" class="col bg-white shadow p-4">
                         <h1 class="section-heading pt-1">ATHLETE DETAILS</h1>
                         <div class="row pt-1 pb-3 px-2">
-                            <input type="text" id="name" class="border-0 border-bottom" name="name" placeholder="Name">
+                            <input type="text" id="name" class="border-0 border-bottom" name="name" value={{element.firstname}} placeholder="Name">
                         </div>
                         <div class="row pb-3 px-2">
-                            <input type="text" id="birthday" class="border-0 border-bottom" name="birthday" placeholder="Date of Birth">
+                            <input type="text" id="birthday" class="border-0 border-bottom" name="editbirth_year" value={{element.birthyear}} placeholder="Date of Birth">
                         </div>
                         <div class="form-group row pb-3 d-flex justify-content-between">
                                 <div class="col">
-                                    <input type="text" id="height" class="border-0 border-bottom" name="height" placeholder="Height">
+                                    <input type="text" id="height" class="border-0 border-bottom" name="height" value={{element.height}} placeholder="Height">
                                 </div>    
                                 <div class="col">
-                                    <input type="text" id="weight" class="border-0 border-bottom" name="weight" placeholder="Weight">                     
+                                    <input type="text" id="weight" class="border-0 border-bottom" name="weight" value={{element.weight}} placeholder="Weight">                     
                                 </div>       
                         </div>
                         <div class="row pb-3 px-2">
-                            <input type="text" id="sport" class="border-0 border-bottom" name="sport" placeholder="Sport">
+                            <input type="text" id="sport" class="border-0 border-bottom" name="sport" value={{element.sport}} placeholder="Sport">
                         </div>
                         <div class="row pb-3 px-2">
-                            <input type="text" id="position" class="border-0 border-bottom" name="position" placeholder="Current Position">
+                            <input type="text" id="position" class="border-0 border-bottom" name="position" value={{element.position}} placeholder="Current Position">
                         </div>
 
                         <h1 class="section-heading mt-3 pt-3 pb-2">CONTACT INFORMATION</h1>
 
                         <div class="row pb-3 px-2">
-                            <input type="text" id="phone" class="border-0 border-bottom" name="phone" placeholder="Phone">
+                            <input type="text" id="phone" class="border-0 border-bottom" name="phone1" value={{element.phone1}} placeholder="Phone">
                         </div>
                         <div class="row pb-4 px-2">
-                            <input type="text" id="phone2" class="border-0 border-bottom" name="phone" placeholder="Phone">
+                            <input type="text" id="phone2" class="border-0 border-bottom" name="phone2" value={{element.phone2}} placeholder="Phone">
                         </div>
                     </div>
                 </div>
                 <div id="second-column" class="col-5">
                     <div id="biography" class="row-6 bg-white shadow p-4 mb-4">
                         <h1 class="section-heading">BIOGRAPHY</h1>
-                        <textarea class="form-control rounded" id="biography-textarea" name="biography" rows="5"></textarea>
+                        <textarea class="form-control rounded" id="biography-textarea" name="biography" value={{element.biography}} rows="5"></textarea>
                     </div>
                     <div id="athlete-history" class="row-6 bg-white shadow p-4">
                         <h1 class="section-heading">ATHLETE HISTORY</h1>
                         <div class="mb-3 px-2">
                             <div class="row pb-2">
-                                <input type="text" id="team-name1" class="border-0 border-bottom" name="team-name1" placeholder="Team Name">
+                                <input type="text" id="team-name1" class="border-0 border-bottom" name="team-name" value={{element.team1}} placeholder="Team Name">
                             </div>
                             <div class="row pb-2">
                                 <div class="col">
-                                    <input type="text" id="position1" class="border-0 border-bottom" name="position1" placeholder="Position">
+                                    <input type="text" id="position1" class="border-0 border-bottom" name="position1" value={{element.team1position}} placeholder="Position">
                                 </div>
                                 <div class="col">
-                                    <input type="text" id="years1" class="border-0 border-bottom" name="years1" placeholder="Years">                     
+                                    <input type="text" id="years1" class="border-0 border-bottom" name="years1" value={{element.team}} placeholder="Years">                     
                                 </div>    
                             </div>   
                         </div>

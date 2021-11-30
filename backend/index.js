@@ -151,18 +151,26 @@ app.get('/getffile', function (req, res) {
 
 app.post('/editffile', function (req, res) {
 	const srcemail = req.body.srcemail;
-	const firstname = req.body.editfname;
-	const lastname = req.body.editlname;
+	const name = req.body.editname;
+	const height = req.body.height;
+	const weight = req.body.weight;
 	const email = req.body.editemail;
 	const sport = req.body.editsport;
 	const position = req.body.editposition;
-	const association = req.body.editassociation;
-	const team = req.body.editteam;
-	const birth_year = req.body.editbirth_year;
-	const class_of = req.body.editclass_of;
-	const country = req.body.editcountry;
-	const state = req.body.editstate;
-	const street = req.body.editstreet;
+	const phone1 = req.body.phone1;
+	const phone2 = req.body.phone2;
+	const biography = req.body.biography;
+	const team1 = req.body.team-name;
+	const team1position = req.body.position1;
+	const team1years = req.body.years1;
+	const team2 = req.body.team-name2;
+	const team2position = req.body.position2;
+	const team2years = req.body.years2;
+	const team3 = req.body.team-name2;
+	const team3position = req.body.position2;
+	const team3years = req.body.years2;
+
+	const birthyear = req.body.editbirth_year;
 	const password = req.body.editpassword;
 
 
@@ -172,9 +180,9 @@ app.post('/editffile', function (req, res) {
 	const video4 = req.body.video4;
 	
 	if(video1) var vidID1 = req.body.video1.split('=');
-	if(video2) var vidID2 = req.body.video1.split('=');
-	if(video3) var vidID3 = req.body.video1.split('=');
-	if(video4) var vidID4 = req.body.video1.split('=');
+	if(video2) var vidID2 = req.body.video2.split('=');
+	if(video3) var vidID3 = req.body.video3.split('=');
+	if(video4) var vidID4 = req.body.video4.split('=');
 
 	const instagram = req.body.instagram
 	const twitter = req.body.twitter;
@@ -194,16 +202,32 @@ app.post('/editffile', function (req, res) {
 		.then(hashedPassword => dbo.collection("fanfiles").updateOne({"email": session.email},
 		{
 			$set: {
-				firstname,
-				lastname,
+				name,
+				height,
+				weight,
+				phone1,
+				phone2,
+				biography,
+				team1,
+				team1position,
+				team1years,
+				team2,
+				team2position,
+				team2years,
+				team3,
+				team3position,
+				team3years,
+				achiev1,
+				achiev2,
+				achiev3,
+				endorsment1,
+				endorsment2,
+				endorsment3,
 				email,
 				password: hashedPassword,
 				sport,
 				position,
-				association,
-				team,
-				birth_year,
-				class_of,
+				birthyear,
 				video1,
 				video2,
 				video3,
@@ -232,15 +256,31 @@ app.post('/editffile', function (req, res) {
 			dbo.collection("fanfiles").updateOne({"email": session.email},
 			{
 				$set: {
-					firstname,
-					lastname,
+					name,
+					height,
+					weight,
+					phone1,
+					phone2,
+					biography,
+					team1,
+					team1position,
+					team1years,
+					team2,
+					team2position,
+					team2years,
+					team3,
+					team3position,
+					team3years,
+					achiev1,
+					achiev2,
+					achiev3,
+					endorsment1,
+					endorsment2,
+					endorsment3,
 					email,
 					sport,
 					position,
-					association,
-					team,
-					birth_year,
-					class_of,
+					birthyear,
 					video1,
 					video2,
 					video3,
