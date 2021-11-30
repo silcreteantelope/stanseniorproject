@@ -17,7 +17,7 @@
   </header>
     <br>
     <br>
-    <div class="page">
+    <div class="page" *ngFor="let element of data">
         <div class="row">
             <div class="col-5">
                 <div class="card fixit">
@@ -42,6 +42,19 @@
                         <option value="me">Only I can see this video</option>
                         </select>
                     </form>
+                    <div class="container rounded bg-white px-5 mt-5 mb-5" >
+                        <form action="/editffile" method="post">
+                            <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
+                                video link 1: <input name="video1" type="text" value={{element.video1}} placeholder="paste a link to a video here..."/> <br />
+                                video link 2: <input name="video2" type="text" value={{element.video2}} placeholder="paste a link to a video here..."/> <br />
+                                video link 3: <input name="video3" type="text" value={{element.video3}} placeholder="paste a link to a video here..."/> <br />
+                                video link 4: <input name="video4" type="text" value={{element.video4}} placeholder="paste a link to a video here..."/> <br />
+                                <div class="row text-center pt-3 px-5 mx-5">
+                                    <input type="submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-7"> 
@@ -55,14 +68,24 @@
                 </div>
                 <div class="row">
                     <div class="video">
-                        <iframe  width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                        <youtube-player 
+                                            videoId={{element.vidID1[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
                         <br>
                         <b>Video Title</b>
                         <br>
                         <small>Upload Date</small>
                     </div>
                     <div class="video">
-                        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                        <youtube-player 
+                                            videoId={{element.vidID2[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
                         <br>
                         <b>Video Title</b>
                         <br>
@@ -71,14 +94,24 @@
                 </div>
                 <div class="row">
                     <div class="video">
-                        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                        <youtube-player 
+                                            videoId={{element.vidID3[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
                         <br>
                         <b>Video Title</b>
                         <br>
                         <small>Upload Date</small>
                     </div>
                     <div class="video">
-                        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                        <youtube-player 
+                                            videoId={{element.vidID4[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
                         <br>
                         <b>Video Title</b>
                         <br>

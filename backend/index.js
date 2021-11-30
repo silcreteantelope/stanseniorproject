@@ -160,15 +160,24 @@ app.post('/editffile', function (req, res) {
 	const phone1 = req.body.phone1;
 	const phone2 = req.body.phone2;
 	const biography = req.body.biography;
-	const team1 = req.body.team-name;
-	const team1position = req.body.position1;
-	const team1years = req.body.years1;
-	const team2 = req.body.team-name2;
-	const team2position = req.body.position2;
-	const team2years = req.body.years2;
-	const team3 = req.body.team-name2;
-	const team3position = req.body.position2;
-	const team3years = req.body.years2;
+	const team1 = req.body.teamname;
+	const teamposition1 = req.body.position1;
+	const teamyears1 = req.body.years1;
+	const team2 = req.body.teamname2;
+	const teamposition2 = req.body.position2;
+	const teamyears2 = req.body.years2;
+	const team3 = req.body.teamname3;
+	const teamposition3 = req.body.position3;
+	const teamyears3 = req.body.years3;
+	const achiev1 = req.body.achievement1;
+	const achiev2 = req.body.achievement2;
+	const achiev3 = req.body.achievement3;
+	const endorsment1 = req.body.endorsement1;
+	const endorsment2 = req.body.endorsement2;
+	const endorsment3 = req.body.endorsement3;
+
+
+
 
 	const birthyear = req.body.editbirth_year;
 	const password = req.body.editpassword;
@@ -209,14 +218,14 @@ app.post('/editffile', function (req, res) {
 				phone2,
 				biography,
 				team1,
-				team1position,
-				team1years,
+				teamposition1,
+				teamyears1,
 				team2,
-				team2position,
-				team2years,
+				teamposition2,
+				teamyears2,
 				team3,
-				team3position,
-				team3years,
+				teamposition3,
+				teamyears3,
 				achiev1,
 				achiev2,
 				achiev3,
@@ -263,14 +272,14 @@ app.post('/editffile', function (req, res) {
 					phone2,
 					biography,
 					team1,
-					team1position,
-					team1years,
+					teamposition1,
+					teamyears1,
 					team2,
-					team2position,
-					team2years,
+					teamposition2,
+					teamyears2,
 					team3,
-					team3position,
-					team3years,
+					teamposition3,
+					teamyears3,
 					achiev1,
 					achiev2,
 					achiev3,
