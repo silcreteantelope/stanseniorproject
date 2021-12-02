@@ -50,7 +50,7 @@
                                 video link 3: <input name="video3" type="text" value={{element.video3}} placeholder="paste a link to a video here..."/> <br />
                                 video link 4: <input name="video4" type="text" value={{element.video4}} placeholder="paste a link to a video here..."/> <br />
                                 <div class="row text-center pt-3 px-5 mx-5">
-                                    <input type="submit" />
+                                    <input type="submit" (click)="openModal('SubmitModal');" />
                                 </div>
                             </div>
                         </form>
@@ -121,6 +121,12 @@
             </div>
         </div>
     </div>
+    <jw-modal id="SubmitModal">
+        <button (click)="closeModal('SubmitModal');" style="font-size: 200%; border: 0ch; float: right; background-color: transparent;">X</button>
+        <br><br>
+        <h2 style="text-align: center;">Videos Updated</h2>
+        <br><br>
+    </jw-modal>
   <footer>
         <div class="bottom-logo-text">FREEAGENTNOW</div> 
         <div class="catchphrase">Get seen. Get heard. Get signed.</div>

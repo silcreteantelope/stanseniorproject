@@ -11,3 +11,102 @@
 </head>
 <body>
 
+	<header>
+        <h1 class="logo-text">FreeAgentNow</h1>
+        <div class="sign-out-btn">Sign Out</div>
+    </header>
+    <div class="flex-container">
+        <div class="profile"  *ngFor="let element of data">
+            <img class="profile-pic" src="assets/defaultProfile.jpg" alt="Person" width="96" height="96">
+            <div class="profile-info">
+                <div class="username">Jared Waimon</div>
+                <div class="user-email">jaredwaimon@example.com</div>
+                <div class="view-fanfile-btn">
+                    <div class="view-fanfile-text">
+                        <a class="nav-link" [routerLink]="['/fanfile/'+element._id]"  >VIEW YOUR FANFILE</a>
+                    </div>
+                </div>
+                <div class="edit-profile-btn">
+                    <div class="edit-profile-text">
+                       <a class="nav-link" routerLink="editProfile">EDIT PROFILE</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <a class="nav-link" routerLink="/editProfile">
+        <div class="tab">
+            <i class="fas fa-file fa-3x"></i>
+            RESUME
+        </div>
+    </a>
+
+    <a class="nav-link" routerLink="/editBlog">
+        <div class="tab">
+            <i class="fas fa-blog fa-3x"></i>
+            BLOG
+        </div>
+    </a>
+
+
+
+    <a class="nav-link" routerLink="/video">
+        <div class="tab">
+            <i class="fas fa-video fa-3x"></i>
+            VIDEOS
+        </div>
+    </a>
+
+    <a class="nav-link" routerLink="/editSocial">
+        <div class="tab">
+            <i class="fas fa-network-wired fa-3x"></i>
+            NETWORK
+        </div>
+    </a>
+
+</div>
+<div class="flex-container">
+    <div class="stats">
+        <div class="stats-title">
+            STATS
+        </div>
+        <div class="line-break"></div>
+        <div class="stats-text">2,176 Fist Bumps</div>
+        <div class="line-break"></div>
+        <div class="stats-text">897 Teammates</div>
+        <div class="line-break"></div>
+        <div class="stats-text">359 Assists</div>
+        <div class="line-break"></div>
+        <div class="stats-text">521 Posts</div>
+        <div class="line-break"></div>
+    </div>
+
+    <div class="messages">
+        <div class="message-alert">You've Got 3 New Messages!</div>
+        <div class="message-box">
+            <div class="message-name">Roger Wierbicki</div>
+            <div class="timestamp">January 28, 2021 - 1:30pm</div>
+            <div class="message-text">Dude, I saw your latest video. That was insane, bro...</div>
+            <div class="read-reply">READ | REPLY</div>
+        </div>
+
+        <div class="message-box">
+            <div class="message-name">Jason Scotto</div>
+            <div class="timestamp">January 28, 2021 - 10:45am</div>
+            <div class="message-text">Hey Jared, I wanted to touch base with you regarding...</div>
+            <div class="read-reply">READ | REPLY</div>
+        </div>
+
+        <div class="message-box">
+            <div class="message-name">Andy Drexel</div>
+            <div class="timestamp">January 28, 2021 - 7:00am</div>
+            <div class="message-text">Jared are you available this afternoon to hop on a call...</div>
+            <div class="read-reply">READ | REPLY</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
