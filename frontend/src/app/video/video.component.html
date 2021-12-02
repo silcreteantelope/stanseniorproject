@@ -1,16 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="video.component.css">
+  <title>Document</title>
+</head>
+<body>
+    <header class="pageheader">
+        <h1 class="logo-text">FreeAgentNow</h1>
+        <div class="sign-out-btn">Sign Out</div>
+  </header>
+    <br>
+    <br>
+    <div class="page" *ngFor="let element of data">
+        <div class="row">
+            <div class="col-5">
+                <div class="card fixit">
+                    <div class="drag-area">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload</header>
+                    <span>or</span>
+                    <input type="file" hidden>
+                </div>
+                    <button type="button" class="btn btn-warning uploadbtn"><i class="fas fa-cloud-upload-alt"></i><b>Choose to Upload</b></button>
+                    <form>
+                    <label class="cardtext" for="ylink">Youtube Link:</label><br>
+                    <input type="text" id="ylink" name="ylink" placeholder="Youtube Link"><br>
+                    <label class="cardtext" for="title">Vidoe Title:</label><br>
+                    <input type="text" id="title" name="title" placeholder="Vidoe Title">
+                        
+                        <label class="cardtext" for="psettings">Privacy Settings:</label><br>
+
+                        <select name="psettings" id="psettings">
+                        <option value="anyone">Anyone can see this video</option>
+                        <option value="followed">Only people I follow can see this video</option>
+                        <option value="me">Only I can see this video</option>
+                        </select>
+                    </form>
+                    <div class="container rounded bg-white px-5 mt-5 mb-5" >
+                        <form action="/editffile" method="post">
+                            <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
+                                video link 1: <input name="video1" type="text" value={{element.video1}} placeholder="paste a link to a video here..."/> <br />
+                                video link 2: <input name="video2" type="text" value={{element.video2}} placeholder="paste a link to a video here..."/> <br />
+                                video link 3: <input name="video3" type="text" value={{element.video3}} placeholder="paste a link to a video here..."/> <br />
+                                video link 4: <input name="video4" type="text" value={{element.video4}} placeholder="paste a link to a video here..."/> <br />
+                                <div class="row text-center pt-3 px-5 mx-5">
+                                    <input type="submit" (click)="openModal('SubmitModal');" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7"> 
+                <div class="row">
+                    <div>
+                        <h4 class="FContainer">Featured Videos</h4>
+                    </div>
+                    <div class="DotsContainer">
+                        <img class="Dots" src="assets/img/dots.jpg">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="video">
+                        <youtube-player 
+                                            videoId={{element.vidID1[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
+                        <br>
+                        <b>Video Title</b>
+                        <br>
+                        <small>Upload Date</small>
+                    </div>
+                    <div class="video">
+                        <youtube-player 
+                                            videoId={{element.vidID2[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
+                        <br>
+                        <b>Video Title</b>
+                        <br>
+                        <small>Upload Date</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="video">
+                        <youtube-player 
+                                            videoId={{element.vidID3[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
+                        <br>
+                        <b>Video Title</b>
+                        <br>
+                        <small>Upload Date</small>
+                    </div>
+                    <div class="video">
+                        <youtube-player 
+                                            videoId={{element.vidID4[1]}} 
+                                            suggestedQuality="highres" 
+                                            [height]="200" 
+                                            [width]="400" >
+                        </youtube-player>
+                        <br>
+                        <b>Video Title</b>
+                        <br>
+                        <small>Upload Date</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <jw-modal id="SubmitModal">
+        <button (click)="closeModal('SubmitModal');" style="font-size: 200%; border: 0ch; float: right; background-color: transparent;">X</button>
+        <br><br>
+        <h2 style="text-align: center;">Videos Updated</h2>
+        <br><br>
+    </jw-modal>
+  <footer>
+        <div class="bottom-logo-text">FREEAGENTNOW</div> 
+        <div class="catchphrase">Get seen. Get heard. Get signed.</div>
+  </footer>
+    
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+<!--
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width, initial-scale=1'>
-		<title>FAN Edit Blog</title>
-		<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-		<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-		<link rel="stylesheet" href="video.component.css">
-		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Fan Edit Videos</title>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="video.component.css">
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     </head>
     <body oncontextmenu='return false'>
-        <br><br><br>
+        <br><br>
         <div class="container-md shadow p-4 px-5 mb-5 bg-white rounded">
             <div class="row px-2 pt-4 pb-4 justify-content-center text-center">
                 <div class="col-sm-8">
@@ -21,12 +163,12 @@
         </div>
         
         <div class="container rounded bg-white px-5 mt-5 mb-5" *ngFor="let element of data">
-            <form class = "inputsWrap" data-toggle="validator" role="form" action="/editffile" method="post">
+            <form action="/editffile" method="post">
                 <div class="container-md shadow my-5 p-5 mb-5 bg-white rounded">
-                    Video link 1: <input name="video1" type="text" value={{element.video1}} placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 2: <input name="video2" type="text" value={{element.video2}} placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 3: <input name="video3" type="text" value={{element.video3}} placeholder="Paste a link to a video here..."/> <br /><br>
-                    Video link 4: <input name="video4" type="text" value={{element.video4}} placeholder="Paste a link to a video here..."/> <br />
+                    video link 1: <input name="name" type="text" value={{element.video1}} placeholder="paste a link to a video here..."/> <br />
+                    video link 2: <input name="name" type="text" value={{element.video2}} placeholder="paste a link to a video here..."/> <br />
+                    video link 3: <input name="name" type="text" value={{element.video3}} placeholder="paste a link to a video here..."/> <br />
+                    video link 4: <input name="name" type="text" value={{element.video4}} placeholder="paste a link to a video here..."/> <br />
                     <div class="row text-center pt-3 px-5 mx-5">
                         <input type="submit" />
                     </div>
@@ -35,3 +177,4 @@
         </div>
     </body>
 </html>
+-->

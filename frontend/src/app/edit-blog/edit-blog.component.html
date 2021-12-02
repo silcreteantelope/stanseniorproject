@@ -1,65 +1,139 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width, initial-scale=1'>
-		<title>FAN Edit Blog</title>
-		<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-		<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-		<link rel="stylesheet" href="edit-blog.component.css">
-		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-		
-	</head>
-  <body oncontextmenu='return false'>
-		<div class="container rounded bg-white mt-5 mb-5">
-    	<div class="row">
-        <div class="col-md-8 col-md-offset-2 border-right">
-	    		<div class="col-md-8 col-md-offset-2">
-						<br>
-    				<h6>Blog Post</h6>
-						<br>
-						<div><label class="labels">Title*</label><input type="text" class="form-control" value="" placeholder="Title of your post"></div>
-						<br>
-						
-    		    <div>
-    		    	<label class="labels">Description</label><textarea class="form-control" value="" placeholder="Description/Content of your post"></textarea>
-    		    </div>
-    		    
-    		    <div>
-    		    	<p class="labels"><span>*</span> - required fields</p>
-    		    </div>
-    		    
-    		    <div>
-    		    	<button type="submit" class="btn btn-primary">Create</button>
-    		    	<button class="btn btn-default"></button>
-    		    </div>
-						<br>
-					</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="edit-blog.component.css">
+    <title>Blog</title>
+</head>
+<body class="container" *ngFor="let element of data">
+    <form class = "inputsWrap" data-toggle="validator" role="form" action="/editffile" method="post">
+        <div id="mySidenav" class="sidenav col-2 px-4 pt-4 d-flex align-content-between flex-wrap" >
+            <div id="choose-topics">
+                <br><br>
+                <h1 class="blog-heading">Choose Topics</h1>
+                <p class="blog-subheading">This article will appear in</p>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sidebar-text">Hockey</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Basketball</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Baseball</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Hockey</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Football</span></button>
+                        <button class="dropdown-item" type="button"><span class="sidebar-text">Soccer</span></button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="tags">
+                <h1 class="blog-heading">Tags</h1>
+                <div class="border">
+                    <p class="sidebar-text">Goalie, Puck, MVP, <br>Champions, Undefeated, <br>Wins</p>
+                </div>
+            </div>
+            <hr>
+            <div id="cover-photo">
+                <h1 class="blog-heading">Cover Photo</h1><br>
+                <div class="row sidebar-text">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-outline-primary"><span class="sidebar-text">Choose File</span></button>                    
+                    </div>
+                    <div class="col-6 pt-2">
+                        <span class="coverphoto-filename">No File Chosen</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="publish" class="row justify-content-around mb-3 pb-3">
+                <div class="col-4">
+                    <button type="button" class="btn btn-light"><span class="sidebar-text">Cancel</span></button>
+                </div>
+                <div class="col-8">
+                    <button type="submit" class="btn btn-warning"><span class="sidebar-text" (click)="openModal('SubmitModal');"><b>Publish Article</b></span></button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4">
-					<div class="p-3 py-5">
-						<div class="card mb-3">
-          		<div class="card-body">
-            		<div class="px-xl-3">
-              		<button class="btn btn-block btn-secondary">
-                		<i class="fa fa-sign-out"></i>
-                		<span>Logout</span>
-              		</button>
-            		</div>
-          		</div>
-        		</div>
-        		<div class="card">
-          		<div class="card-body">
-            		<h6 class="card-title font-weight-bold">Support</h6>
-            		<p class="card-text">If you need help, or have any questions, please contact our support team.</p>
-            		<button type="button" class="btn btn-primary">Contact Us</button>
-          		</div>
-        		</div>
-          </div>
-        </div>
-    	</div>
-		</div>
-		<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
-		<script type='text/javascript'></script>
-	</body>
-</html>
+        <div class="row justify-content-around mt-4 mb-4 page-content">
+            <div class="col-8 px-4 pt-4 post-background">
+                <br>
+                <h1 class="blog-heading pb-1">New Post</h1>
+                <div class="d-inline-flex">
+                    <div class="col-1 pt-2">
+                        <img class="profile-image" src="assets/img/blog-pic.png" alt="Jared Waimon">
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <input type="text" id="name" class="blog-heading mb-0 mt-0" name="newblogtitle" value={{element.newblogtitle}} placeholder="Blog Title">
+                            <p class="blog-subheading">Last edited 25 minutes ago by <span class="inline-username">Jared Waimon</span></p>    
+                        </div>
+                        <div class="row bg-light border-top border-bottom">
+                            <p>text logos go here</p>
+                        </div> 
+                        <div class="row mt-3">
+                            <textarea class="blog-text" id="biography-textarea" name="newblog" value={{element.newblog}} rows="30" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. Tempus urna et pharetra pharetra. Facilisis leo vel fringilla est ullamcorper eget. Volutpat est velit egestas dui. Quis viverra nibh cras pulvinar. At quis risus sed vulputate odio ut. Accumsan lacus vel facilisis volutpat est. Tempus imperdiet nulla malesuada pellentesque elit. Lacus laoreet non curabitur gravida arcu ac tortor dignissim. Facilisis mauris sit amet massa vitae tortor. In vitae turpis massa sed elementum tempus. Maecenas volutpat blandit aliquam etiam erat. Duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Vitae nunc sed velit dignissim sodales ut eu. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Mauris augue neque gravida in fermentum. In aliquam sem fringilla ut morbi. Sed augue lacus viverra vitae congue eu consequat. <br><br>
+                                Ornare lectus sit amet est placerat in egestas erat. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Donec ultrices tincidunt arcu non sodales neque. Nunc sed augue lacus viverra vitae congue eu. Tortor id aliquet lectus proin. Sagittis orci a scelerisque purus semper eget. Varius sit amet mattis vulputate enim nulla aliquet. Et odio pellentesque diam volutpat commodo sed egestas. At consectetur lorem donec massa sapien faucibus. Lorem donec massa sapien faucibus et. At in tellus integer feugiat scelerisque varius morbi enim. Euismod elementum nisi quis eleifend. Porta nibh venenatis cras sed felis. Tortor pretium viverra suspendisse potenti nullam ac. Consectetur adipiscing elit ut aliquam purus. Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Tellus in metus vulputate 
+                                eu scelerisque felis."></textarea>
+                                <p class="blog-text"></p>
+                            </div>    
+                        </div>
+                    </div>
+                </div>  
+                <div class="recent-post-background col-3 pl-4 pt-4">
+                    <br>
+                    <h1 class="blog-heading">Recent Posts</h1>
+                    <hr>
+                    <div class="row align-items-center">
+                        <div class="d-inline-flex pt-3">
+                            <div class="col-4">
+                                <img class="post-images" src="assets/img/blog-post3.png" alt="Jared Waimon">
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <p class="blog-heading mb-0 mt-0">Blog Post 3 Title Goes Here</p>  
+                                    <p class="blog-subheading">September 25, 2021</p>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="d-inline-flex pt-3">
+                            <div class="col-4">
+                                <img class="post-images" src="assets/img/blog-post2.png" alt="Jared Waimon">
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <p class="blog-heading mb-0 mt-0">Blog Post 2 Title Goes Here</p>  
+                                    <p class="blog-subheading">September 25, 2021</p>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="d-inline-flex pt-3">
+                            <div class="col-4">
+                                <img class="post-images" src="assets/img/blog-post1.png" alt="Jared Waimon">
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <p class="blog-heading mb-0 mt-0">Blog Post 1 Title Goes Here</p>  
+                                    <p class="blog-subheading">September 25, 2021</p>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </form>
+        <jw-modal id="SubmitModal">
+			<button (click)="closeModal('SubmitModal');" style="font-size: 200%; border: 0ch; float: right; background-color: transparent;">X</button>
+			<br><br>
+			<h2 style="text-align: center;">Blog Updated</h2>
+			<br><br>
+		</jw-modal>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+</body>
+    </html>    

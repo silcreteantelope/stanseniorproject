@@ -1,0 +1,24 @@
+
+  .static {
+    left: 30%;
+    right: 30%;
+    position: absolute;
+  }
+  .Get-seen-Get-heard-Get-signed {
+    width: 504px;
+    height: 37px;
+    font-family: Montserrat;
+    font-size: 200%;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fdbc11;
+  }
+  .video {
+    position: fixed;
+    left: 20%;
+    right: 20%;
+}

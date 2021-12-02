@@ -1,13 +1,15 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark px-2">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FAN File</a>
+        <!--
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+    -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngFor="let element of data">
             <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="editProfile">Profile</a>
@@ -22,24 +24,27 @@
                     <a class="nav-link" routerLink="editSocial">Social</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="fanfile">Fanfile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="register">Register for an Account</a>
+                    <a class="nav-link" [routerLink]="['fanfile/'+element._id]"  >Fanfile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="login">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
+                    <a class="nav-link" routerLink="register">Register for an Account</a>
                 </li>
-                <li>
-                    <h2>{{element?.email}}</h2>
+                <li style="float:right">
+                    <a class="nav-link">Hello, {{element?.name}}</a>
                 </li>
-                <form class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
-                                   <button type="submit" class="btn btn-primary profile-button" value="Signout" type="button"><input type="submit" value="Signout"/></button>
+                <form style="float: right;" class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
+                    <input type="submit" class="btn btn-warning mx-2" value="Signout" (click)="openModal('LogOutModal');">
                 </form>
             </ul>
         </div>
     </div>
+    <jw-modal id="LogOutModal">
+        <button (click)="closeModal('LogOutModal');" style="font-size: 200%; border: 0ch; float: right; background-color: transparent;">X</button>
+        <br><br>
+        <h2 style="text-align: center;">Signed Out</h2>
+        <br><br>
+    </jw-modal>
 </nav>
