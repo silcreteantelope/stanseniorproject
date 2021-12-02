@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {FanfileService} from "../pulldata.service";
+
 
 
 @Component({
@@ -9,9 +11,14 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  data:any=[
+  	{name: "Sign in to Access Account"}
+  ];
 
-  ngOnInit(): void {
+  constructor(private fanfile: FanfileService) {
   }
 
+    ngOnInit() {
+        this.fanfile.getffile().subscribe(data => this.data = data);
+	}   
 }
