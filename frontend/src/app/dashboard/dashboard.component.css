@@ -27,8 +27,8 @@ footer {
 img {
     border-radius: 50%;
     position: absolute;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     right: 400px;
   }
 
@@ -41,7 +41,7 @@ img {
   }
 
 .profile {
-    width: 446px;
+    /* width: 446px; */
     margin: 25px 0 25px 98px;
     padding: 16.4px 45px 23px 171px;
     /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
@@ -50,8 +50,8 @@ img {
 
 .profile-pic {
     position: absolute;
-    left: 40px;
-    top: -12px;
+    left: 90px;
+    top: 15px;
 }
 
 .profile-info {
@@ -94,7 +94,7 @@ img {
     /* width: 230px; */
     /* height: 35px; */
     margin: 14px 0 0;
-    padding: 10px 68px 9px;
+    /* padding: 10px 68px 9px; */
     border: solid 1px #707070;
     background-color: #000;
   }
@@ -122,7 +122,7 @@ img {
 
 .tab {
     text-align: center;
-    width: 200px;
+    max-width: 200px;
     height: 100px;
     margin: 0 33px 0 34px;
     padding: 20px 50px 36px 49px;
