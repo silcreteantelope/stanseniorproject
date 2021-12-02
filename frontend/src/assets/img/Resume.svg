@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="105.287" height="130" viewBox="0 0 105.287 130">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        filter: url(#Icon_ionic-md-document);
+      }
+    </style>
+    <filter id="Icon_ionic-md-document" x="0" y="0" width="105.287" height="130" filterUnits="userSpaceOnUse">
+      <feOffset dx="10" dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Icon" transform="translate(-698 -256)">
+    <g class="cls-2" transform="matrix(1, 0, 0, 1, 698, 256)">
+      <path id="Icon_ionic-md-document-2" data-name="Icon ionic-md-document" class="cls-1" d="M51.922,3.375H16.161A9.515,9.515,0,0,0,6.75,12.99V93.76a9.515,9.515,0,0,0,9.411,9.615H72.626a9.515,9.515,0,0,0,9.411-9.615V34.144ZM48.158,37.99V11.067L74.508,37.99Z" transform="translate(-1.75 1.63)"/>
+    </g>
+  </g>
+</svg>

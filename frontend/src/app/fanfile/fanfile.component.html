@@ -10,78 +10,146 @@
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<li *ngFor="let element of data">
-		<h2 class="text-center">{{element.firstname}} {{element.lastname}}</h2>
+	<br><br><br>
+	<div class="col-md-8 offset-md-3">
+		<div><input type="image" id="static" src="../../assets/img/BackTL.png" width="33%" 
+			alt="Resume" style="z-index: 2;" (click)="openModal('ResumeModal')">&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="image" id="static" src="../../assets/img/BackTR.png" width="33%" 
+			alt="Blog" style="z-index: 2; " (click)="openModal('BlogModal')"></div><p></p>
+		<div><input type="image" id="static" src="../../assets/img/BackBL.png" width="33%" 
+			alt="Video" style="z-index: 2;" (click)="openModal('VideoModal')">&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="image" id="static" src="../../assets/img/BackBR.png" width="33%" 
+			alt="Network" (click)="openModal('NetworkModal')"></div>
+	</div>
+	<div class="col-md-8 offset-md-4">
+	<img src="../../assets/img/words.PNG" width="40%" alt="Get-seen-Get-heard-Get-signed">
+	</div>
 
-		<div class="row">
-			<div class="col-md-4">
-				<h2>Resume</h2>
-				<p>{{element.firstname}} {{element.lastname}}</p>
-				<p>Association: {{element.association}}</p>
-				<p>Team: {{element.team}}</p>
-				<p>Position: {{element.position}}</p>
-				<p>Birth Year: {{element.birth_year}}</p>
-				<p>Class of: {{element.class_of}}</p>
-			</div>
-			<div class="col-md-8">
-				<h2>Blog</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<h2>Videos</h2>
-				<div class="row">
-				<div class="col-md-6">
-					<youtube-player 
-					videoId={{element.vidID1[1]}} 
-					suggestedQuality="highres" 
-					[height]="200" 
-					[width]="400" >
-				</youtube-player>
-				<youtube-player 
-					videoId={{element.vidID2[1]}}
-					suggestedQuality="highres" 
-					[height]="200" 
-					[width]="400" >
-				</youtube-player>
-			</div>
-			<div class="col-md-6">
-				<!--
-				<youtube-player 
-					videoId="YqAml6e-H7U" 
-					suggestedQuality="highres" 
-					[height]="200" 
-					[width]="400" >
-				</youtube-player>
+	<li *ngFor="let element of data" style="list-style-type: none;">
+
+
+				<jw-modal id="ResumeModal">
+					<button (click)="closeModal('ResumeModal');" style="font-size: 200%; color: white; border: 0ch; float: right; background-color: transparent;">X</button>
+					<div style="background-color: rgba(0, 0, 0, 0.79); margin: -20px;">
+						<br><br><br><br><br>
+						<div class="row">
+							<div class="col-3"></div>
+							<div class="col-2">
+								<img class="float-right" style="color: white;" alt="Profile Picture">
+							</div>
+							<div class="container col-6">
+								<h1 style="color: white;">{{element.firstname}} {{element.lastname}}</h1>
+								<br><br>
+								<p style="color: white;">Association: {{element.association}}</p>
+								<p style="color: white;">Team: {{element.team}}</p>
+								<p style="color: white;">Position: {{element.position}}</p>
+								<p style="color: white;">Birth Year: {{element.birth_year}}</p>
+								<p style="color: white;">Class of: {{element.class_of}}</p>
+								
+							</div>
+							
+						</div>
+						<div class="container"><hr style="color: yellow;"></div><br>
+						<div class="container">
+							<h2 style="color: white; text-align: center;">Endorsements:</h2>
+							<p style="color: white;">
+								“{{element.firstname}} is a highly motivated student/athlete who pursues improving as a player and goalie with passion and dedication. He is self-motivated to excel and has laid out a plan to pursue his dream of becoming his best. While goalie is his main interest, he is dynamic when he plays out, and elevates the play of his teammates.
+								<br><br>
+								His desire to learn about leadership prompted him to ask about being the team captain. His sincere interest and reasoning changed my mind regarding having one for this age group, and when the idea was presented to the team, they accepted him unanimously. He leads by example with his work ethic, positive attitude, and compassion for his teammates.”
+								<br><br>
+								- Coach Norton, South Windsor Youth Hockey
+							</p>
+						</div><br>
+						<div class="container"><hr style="color: yellow;"></div><br>
+						<div class="container">
+							<h2 style="color: white; text-align: center;">About {{element.firstname}}:</h2>
+							<p style="color: white;">{{element.biography}}</p>
+						</div>
+						<br><br><br><br>
+					</div>
+				</jw-modal>
+
+
+				<jw-modal id="BlogModal">
+					<button (click)="closeModal('BlogModal');" style="font-size: 200%; color: white; border: 0ch; float: right; background-color: transparent;">X</button>
+					<div style="background-color: rgba(0, 0, 0, 0.79); margin: -20px;">
+						<br><br><br>
+						<div class="row">
+							<div class="col-3"></div>
+							<div class="col-3">
+								<h1 style="color: white;">{{element.newblogtitle}}</h1>
+							</div>
+						</div>
+						<hr><br>
+						<div class="container" style="background-color: white;">
+							{{element.newblog}}
+						</div><br>
+					</div>
+				</jw-modal>
+
+				<jw-modal id="NetworkModal">
+					<button (click)="closeModal('NetworkModal');" style="font-size: 200%; color: white; border: 0ch; float: right; background-color: transparent;">X</button>
+					<div style="background: black; margin: -40px;">
+						<br><br><br><br>
+						<div class="row">
+							<div class="col-4"></div>
+							<div class="col-8 ">
+								<a href={{element.instagram}}>
+									<img src="../../assets/img/Insta.PNG" alt="Instagram" width="26%">
+								</a>&nbsp;&nbsp;&nbsp;
+									<a href={{element.twitter}}>
+								<img src="../../assets/img/Twitter.PNG" alt="Twitter" width="31%">
+									</a><br><br><br><br>
+								<a href={{element.tiktok}}>
+									<img src="../../assets/img/tiktok.PNG" alt="TikTok" width="25%">
+								</a>&nbsp;&nbsp;&nbsp;
+								<a href={{element.snapchat}}>
+									<img src="../../assets/img/Snap.PNG" alt="SnapChat" width="28%">
+								</a>
+							</div>
+						</div><br><br><br><br>
+					</div>
+				</jw-modal>
 				
-				<youtube-player 
-					videoId="YqAml6e-H7U" 
-					suggestedQuality="highres" 
-					[height]="200" 
-					[width]="400" >
-				</youtube-player>
-			-->
-				</div></div>
-			</div>
-			<div class="col-md-8">
-				<h2>Networks</h2>
-				<a href={{element.instagram}}>
-					<i class="fab fa-instagram"></i>
-				</a>
-				<a href={{element.twitter}}>
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a href={{element.tiktok}}>
-					<p>Tiktok image here </p>
-				</a>
-				<a href={{element.snapchat}}>
-					<i class="fab fa-snapchat"></i>
-				</a>
-			</div>
-		</div>
+				<jw-modal id="VideoModal">
+					<button (click)="closeModal('VideoModal');" style="font-size: 200%; color: white; border: 0ch; float: right; background-color: transparent;">X</button>
+					<div style="background: black; margin: -40px;">
+						<div style="padding: 5%;">
+							<div class="row">
+								<div class="col-2"></div>
+								<div class="col-10">
+									<youtube-player class=""
+										videoId={{element.vidID1[1]}} 
+										suggestedQuality="highres"
+										[height] = bVidHeight
+										[width] = bVidWidth>
+									</youtube-player>
+									<br><br><br>
+									<div class="row">
+										<div class="col-3"><youtube-player 
+											videoId={{element.vidID2[1]}}
+											suggestedQuality="highres"
+											[height] =sVidHeight
+											[width]=sVidWidth>
+										</youtube-player></div>
+										<div class="col-3"><youtube-player 
+											videoId={{element.vidID3[1]}}
+											suggestedQuality="highres" 
+											[height]=sVidHeight 
+											[width]=sVidWidth >
+										</youtube-player></div>
+										<div class="col-3"><youtube-player 
+											videoId={{element.vidID4[1]}}
+											suggestedQuality="highres" 
+											[height]=sVidHeight 
+											[width]=sVidWidth >
+										</youtube-player></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</jw-modal>
 	</li>
 
 	<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>

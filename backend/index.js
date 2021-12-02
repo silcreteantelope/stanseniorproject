@@ -50,7 +50,7 @@ app.post('/login', function (req, res) {
 					session=req.session;
 					session.userid=userid;
 					session.email=email;
-					res.send('Logged in successfully');
+					//res.send('Logged in successfully');
 				}
 				else
 					res.send('Wrong password');
@@ -76,7 +76,7 @@ app.post('/addffile', function (req, res) {
 	const birth_year = req.body.birth_year;
 	const class_of = req.body.class_of;
 	const password = req.body.password;
-	res.send('Registered successfully.');
+	//res.send('Registered successfully.');
 	MongoClient.connect(url, function(err, db) {
 		if (err) throw err;
 		const dbo = db.db("test");
@@ -201,7 +201,8 @@ app.post('/editffile', function (req, res) {
 	const newblogtitle=req.body.newblogtitle;
 	const newblog=req.body.newblog;
 
-	res.send('Edited successfully.');
+	//res.send('Edited successfully.');
+
 	MongoClient.connect(url, function(err, db) {
 		if (err) throw err;
 		const dbo = db.db("test");

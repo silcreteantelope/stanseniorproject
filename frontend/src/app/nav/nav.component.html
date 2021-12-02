@@ -9,6 +9,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngFor="let element of data">
             <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="editProfile">Profile</a>
                 </li>
                 <li class="nav-item">
@@ -24,21 +27,24 @@
                     <a class="nav-link" [routerLink]="['fanfile/'+element._id]"  >Fanfile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="register">Register for an Account</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" routerLink="login">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
+                    <a class="nav-link" routerLink="register">Register for an Account</a>
                 </li>
-                <li>
+                <li style="float:right">
                     <a class="nav-link">Hello, {{element?.name}}</a>
                 </li>
-                <form class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
-                    <input type="submit" class="btn btn-warning mx-2" value="Signout">
-            </form>
-        </ul>
+                <form style="float: right;" class = "inputsWrap" data-toggle="validator" role="form" action="/signout" method="post">
+                    <input type="submit" class="btn btn-warning mx-2" value="Signout" (click)="openModal('LogOutModal');">
+                </form>
+            </ul>
+        </div>
     </div>
-</div>
+    <jw-modal id="LogOutModal">
+        <button (click)="closeModal('LogOutModal');" style="font-size: 200%; border: 0ch; float: right; background-color: transparent;">X</button>
+        <br><br>
+        <h2 style="text-align: center;">Signed Out</h2>
+        <br><br>
+    </jw-modal>
 </nav>

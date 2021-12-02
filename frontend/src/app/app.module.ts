@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { YouTubePlayer, YouTubePlayerModule } from '@angular/youtube-player';
+import { ModalModule } from './_modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
+  ModalModule,
   YouTubePlayerModule,
 	BrowserModule,
   AppRoutingModule,
