@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {FanfileService} from "../pulldata.service";
 import { ModalService } from '../_modal';
 
+
 @Component({
   selector: 'app-edit-blog',
   templateUrl: './edit-blog.component.html',
